@@ -25,9 +25,9 @@ func _on_accept_area_entered(_area):
 	pass
 
 # 如果進入上方移動區
-func _on_move_area_entered(area):
+func _on_move_area_entered(_area):
 	move_area = true
 	move = get_window().position - DisplayServer.mouse_get_position()
 # 如果離開上方移動區
-func _on_move_area_exited(area):
+func _on_move_area_exited(_area):
 	move_area = false
