@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://qj2rdpcwsg37"]
+[gd_scene load_steps=5 format=3 uid="uid://qj2rdpcwsg37"]
 
 [ext_resource type="Texture2D" uid="uid://bdxr7k0flx0jb" path="res://assets/螢幕擷取畫面 2025-02-26 154050.png" id="1_vvab6"]
 [ext_resource type="Script" path="res://scence/Sprite2D.gd" id="2_h1xq7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbpf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1bua"]
+size = Vector2(60, 20)
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,3 +16,29 @@ texture = ExtResource("1_vvab6")
 script = ExtResource("2_h1xq7")
 
 [node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+
+[node name="accept" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="accept"]
+shape = SubResource("CircleShape2D_gbpf6")
+
+[node name="books" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="books"]
+position = Vector2(394, 45)
+shape = SubResource("RectangleShape2D_s1bua")
+
+[node name="move" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move"]
+position = Vector2(-1, -227)
+scale = Vector2(23.335, 2)
+shape = SubResource("RectangleShape2D_s1bua")
+
+[connection signal="area_entered" from="accept" to="Sprite2D" method="_on_accept_area_entered"]
+[connection signal="body_entered" from="accept" to="Sprite2D" method="_on_accept_body_entered"]
+[connection signal="area_entered" from="move" to="Sprite2D" method="_on_move_area_entered"]
+[connection signal="area_exited" from="move" to="Sprite2D" method="_on_move_area_exited"]
