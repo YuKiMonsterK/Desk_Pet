@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_s1bua")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="move"]
-position = Vector2(-1, -227)
+position = Vector2(-2, -194)
 scale = Vector2(23.335, 2)
 shape = SubResource("RectangleShape2D_s1bua")
 
