@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b12fvlwsbh7xi"]
+
+[ext_resource type="Script" path="res://scence/function.gd" id="1_60wau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1bua"]
+size = Vector2(49.4118, 20)
+
+[node name="function" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_60wau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.915, 4.165)
+shape = SubResource("RectangleShape2D_s1bua")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.357018, 0.357018)
+region_enabled = true
+region_rect = Rect2(1164.5, 104.796, 320.12, 285.597)

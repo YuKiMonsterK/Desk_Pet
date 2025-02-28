@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ditexttlkp1l3"]
+
+[ext_resource type="PackedScene" uid="uid://b12fvlwsbh7xi" path="res://scence/Function.tscn" id="1_76tpl"]
+[ext_resource type="Texture2D" uid="uid://bsvqwwfjnhdne" path="res://assets/1740762338099.png" id="2_mnyur"]
+
+[node name="tomato" instance=ExtResource("1_76tpl")]
+script = null
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_mnyur")
