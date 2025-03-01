@@ -1,3 +1,4 @@
+class_name UI
 extends Node2D
 
 @onready var accept = $"accept"
@@ -8,6 +9,8 @@ var move_area = false
 var move_p = Vector2i()
 var tomato_area = false
 
+signal interact
+
 # 當開始時執行
 func _ready():
 	camera_2d.position.x = 0
@@ -16,6 +19,7 @@ func _ready():
 	
 # 每幀執行
 func _process(_delta):
+	#使滑鼠
 	accept.position = Vector2i(get_global_mouse_position())
 	
 # 有輸入時執行
@@ -30,8 +34,7 @@ func _input(event):
 		move_p = get_window().position - DisplayServer.mouse_get_position()
 	
 	if Input.is_action_pressed("accept")and tomato_area:
-		print("tomato")
-		
+		emit_signal("interact")
 # 如果進入上方移動區
 func _on_move_area_entered(_area):
 	move_area = true
@@ -45,3 +48,4 @@ func _on_tomato_area_entered(_area):
 	
 func _on_tomato_area_exited(_area):
 	tomato_area = false
+

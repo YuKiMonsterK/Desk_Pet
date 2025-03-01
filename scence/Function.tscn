@@ -1,19 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://b12fvlwsbh7xi"]
+[gd_scene load_steps=4 format=3 uid="uid://b12fvlwsbh7xi"]
 
-[ext_resource type="Script" path="res://scence/function.gd" id="1_60wau"]
+[ext_resource type="Script" path="res://script/function.gd" id="1_a5kjv"]
+[ext_resource type="Texture2D" uid="uid://bnwwho7cin6jr" path="res://assets/1740762358631.png" id="2_wjywk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1bua"]
-size = Vector2(49.4118, 20)
+size = Vector2(187.309, 27.7778)
 
 [node name="function" type="Area2D"]
 collision_layer = 2
-script = ExtResource("1_60wau")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.915, 4.165)
-shape = SubResource("RectangleShape2D_s1bua")
+script = ExtResource("1_a5kjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.357018, 0.357018)
 region_enabled = true
 region_rect = Rect2(1164.5, 104.796, 320.12, 285.597)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.7, 4.5)
+shape = SubResource("RectangleShape2D_s1bua")
+
+[node name="box" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(112, 75)
+scale = Vector2(1.06335, 1.64652)
+texture = ExtResource("2_wjywk")
+region_enabled = true
+region_rect = Rect2(1729.3, 851.021, 442.519, 273.043)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
