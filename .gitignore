@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 addons/ridiculous_coding/
+addons/net.yarvis.pixel_pen/
