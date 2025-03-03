@@ -1,6 +1,9 @@
-extends Area2D
+extends Node2D
 
+@onready var interact = get_node("..")
 
 func _ready():
-	pass
+	interact.connect("interact",_received_interact)
 
+func _received_interact():
+	print("OK")

@@ -26,7 +26,6 @@ func _process(_delta):
 		accept_sec = 0
 	if not Input.is_action_pressed("accept") and move_edge:
 			move_edge = false
-			print("end")
 # 有輸入時執行
 func _input(event):
 	
@@ -38,10 +37,10 @@ func _input(event):
 	# 此處缺點：平常按確定也會計算move_p
 	elif Input.is_action_pressed("accept") and not move_edge:
 		move_p = get_window().position - DisplayServer.mouse_get_position()
-	
-	#if Input.is_action_pressed("accept")and tomato_area:
-		#emit_signal("interact")
 
 # 如果到移動區的邊緣
 func _on_move_mouse_exited():
 	move_edge = true
+	
+func _on_test_button_area_entered(area):
+	emit_signal("interact")
