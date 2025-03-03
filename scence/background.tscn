@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcpk3rdw1pwk3"]
+
+[ext_resource type="PackedScene" uid="uid://p2hcm1yycqn" path="res://assets/room.glb" id="1_w67cc"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="room" parent="." instance=ExtResource("1_w67cc")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.979925, 0.199368, 0, -0.199368, 0.979925, 0, 10.655, 24.32)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.9994, 0)
+light_energy = 16.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 4096.0

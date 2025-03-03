@@ -16,10 +16,14 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 0)
 config/icon="res://icon.svg"
 
+[autoload]
+
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+
 [display]
 
-window/size/viewport_width=1400
-window/size/viewport_height=500
+window/size/viewport_width=400
+window/size/viewport_height=600
 window/size/borderless=true
 window/size/transparent=true
 window/per_pixel_transparency/allowed=true

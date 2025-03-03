@@ -1,21 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://qj2rdpcwsg37"]
+[gd_scene load_steps=7 format=3 uid="uid://qj2rdpcwsg37"]
 
-[ext_resource type="Texture2D" uid="uid://bdxr7k0flx0jb" path="res://assets/螢幕擷取畫面 2025-02-26 154050.png" id="1_vvab6"]
-[ext_resource type="Script" path="res://scence/Sprite2D.gd" id="2_h1xq7"]
+[ext_resource type="Script" path="res://script/UI.gd" id="2_h1xq7"]
+[ext_resource type="PackedScene" uid="uid://ditexttlkp1l3" path="res://scence/tomato.tscn" id="2_s2pc8"]
+[ext_resource type="PackedScene" uid="uid://b12fvlwsbh7xi" path="res://scence/Function.tscn" id="3_86h0q"]
+[ext_resource type="Texture2D" uid="uid://bsvqwwfjnhdne" path="res://assets/1740762338099.png" id="4_ymg73"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbpf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1bua"]
-size = Vector2(60, 20)
+size = Vector2(24.5214, 13)
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 2)
-texture = ExtResource("1_vvab6")
 script = ExtResource("2_h1xq7")
-
-[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
 
 [node name="accept" type="Area2D" parent="."]
 collision_mask = 2
@@ -23,22 +19,41 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="accept"]
 shape = SubResource("CircleShape2D_gbpf6")
 
-[node name="books" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="books"]
-position = Vector2(394, 45)
-shape = SubResource("RectangleShape2D_s1bua")
-
 [node name="move" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="move"]
-position = Vector2(-1, -227)
-scale = Vector2(23.335, 2)
+position = Vector2(-1, -289)
+scale = Vector2(16.26, 2)
 shape = SubResource("RectangleShape2D_s1bua")
 
-[connection signal="area_entered" from="accept" to="Sprite2D" method="_on_accept_area_entered"]
-[connection signal="body_entered" from="accept" to="Sprite2D" method="_on_accept_body_entered"]
-[connection signal="area_entered" from="move" to="Sprite2D" method="_on_move_area_entered"]
-[connection signal="area_exited" from="move" to="Sprite2D" method="_on_move_area_exited"]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="tomato" parent="." instance=ExtResource("2_s2pc8")]
+position = Vector2(-159, -213)
+scale = Vector2(0.645, 0.645)
+
+[node name="CollisionShape2D" parent="tomato" index="1"]
+scale = Vector2(0.515, 3.311)
+
+[node name="check" parent="." instance=ExtResource("3_86h0q")]
+position = Vector2(-160, -125)
+scale = Vector2(0.45, 0.45)
+
+[node name="Sprite2D" parent="check" index="0"]
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_ymg73")
+region_rect = Rect2(1653.17, 97.4362, 373.473, 276.182)
+
+[node name="CollisionShape2D" parent="check" index="1"]
+position = Vector2(2.22225, 2.22222)
+scale = Vector2(0.75, 4.28)
+
+[connection signal="interact" from="." to="tomato" method="_on_node_2d_interact"]
+[connection signal="area_entered" from="move" to="." method="_on_move_area_entered"]
+[connection signal="area_exited" from="move" to="." method="_on_move_area_exited"]
+[connection signal="area_entered" from="tomato" to="." method="_on_tomato_area_entered"]
+[connection signal="area_exited" from="tomato" to="." method="_on_tomato_area_exited"]
+
+[editable path="tomato"]
+[editable path="check"]
