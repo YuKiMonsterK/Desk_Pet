@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Desk pet"
-run/main_scene="res://scence/Ui.tscn"
+run/main_scene="res://scene/Ui.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 0)
 config/icon="res://icon.svg"
