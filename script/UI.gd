@@ -1,13 +1,12 @@
-class_name UI
 extends Node2D
 
 @onready var accept = $"accept"
-@onready var tomato = $"tomato"
 @onready var camera_2d = $"Camera2D"
 
-var move_area = false
+var move_edge = false
 var move_p = Vector2i()
 var tomato_area = false
+var accept_sec = 0
 
 signal interact
 
@@ -21,31 +20,27 @@ func _ready():
 func _process(_delta):
 	#使滑鼠
 	accept.position = Vector2i(get_global_mouse_position())
-	
+	if Input.is_action_pressed("accept"):
+		accept_sec += 1
+	else:
+		accept_sec = 0
+	if not Input.is_action_pressed("accept") and move_edge:
+			move_edge = false
 # 有輸入時執行
 func _input(event):
 	
-	# 如果按下左鍵並移動，且在上方移動區
-	if Input.is_action_pressed("accept") and move_area and event is InputEventMouseMotion:
+	# 如果按下左鍵並移動，且在移動區邊緣
+	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
 		#更改遊戲窗口至左鍵位置
 		get_window().position = DisplayServer.mouse_get_position() + move_p
-	# 如果只按下左鍵，且在上方移動區
-	elif Input.is_action_pressed("accept") and move_area:
+	# 如果只按下左鍵，且在移動區邊緣
+	# 此處缺點：平常按確定也會計算move_p
+	elif Input.is_action_pressed("accept") and not move_edge:
 		move_p = get_window().position - DisplayServer.mouse_get_position()
-	
-	if Input.is_action_pressed("accept")and tomato_area:
-		emit_signal("interact")
-# 如果進入上方移動區
-func _on_move_area_entered(_area):
-	move_area = true
-	
-# 如果離開上方移動區
-func _on_move_area_exited(_area):
-	move_area = false
 
-func _on_tomato_area_entered(_area):
-	tomato_area = true
+# 如果到移動區的邊緣
+func _on_move_mouse_exited():
+	move_edge = true
 	
-func _on_tomato_area_exited(_area):
-	tomato_area = false
-
+func _on_test_button_area_entered(area):
+	emit_signal("interact")

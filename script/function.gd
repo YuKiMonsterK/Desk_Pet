@@ -1,10 +1,9 @@
-extends Area2D
+extends Node2D
 
-@onready var box = $box
+@onready var interact = get_node("..")
 
 func _ready():
-	box.visible = false
-	
-func _on_node_2d_interact():
-	print("receive")
-	box.visible = true
+	interact.connect("interact",_received_interact)
+
+func _received_interact():
+	print("OK")
