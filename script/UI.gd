@@ -14,7 +14,6 @@ func _ready():
 	camera_2d.position.x = 0
 	camera_2d.position.y = 0
 	camera_2d.set_zoom(Vector2(1, 1))
-	
 # 每幀執行
 func _process(_delta):
 	#使滑鼠碰撞框每幀都在滑鼠上
