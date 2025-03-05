@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://brp1tmqhpjvc0"]
+
+[ext_resource type="PackedScene" uid="uid://dcpk3rdw1pwk3" path="res://scene/background.tscn" id="1_rfpr5"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Node3D" parent="SubViewport" instance=ExtResource("1_rfpr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146469, 1.19209e-07, -0.0456426)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 10.79, 28.49)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 18.7055)
+omni_range = 30.412
+omni_shadow_mode = 0

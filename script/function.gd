@@ -7,3 +7,4 @@ func _ready():
 
 func _received_interact():
 	print("OK")
+
