@@ -32,3 +32,4 @@ position = Vector2(-135, -172)
 [connection signal="interact" from="." to="test_button" method="_on_node_2d_interact"]
 [connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]
 [connection signal="area_entered" from="test_button" to="." method="_on_test_button_area_entered"]
+[connection signal="area_exited" from="test_button" to="." method="_on_test_button_area_exited"]
