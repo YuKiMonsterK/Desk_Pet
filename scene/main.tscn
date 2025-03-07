@@ -1,18 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://brp1tmqhpjvc0"]
+[gd_scene load_steps=6 format=3 uid="uid://qj2rdpcwsg37"]
 
-[ext_resource type="PackedScene" uid="uid://dcpk3rdw1pwk3" path="res://scene/background.tscn" id="1_rfpr5"]
+[ext_resource type="Script" path="res://script/UI.gd" id="1_vwfic"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_1sh84"]
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="2_h3tes"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbpf6"]
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
+radius = 49.0102
 
-[node name="Node3D" parent="SubViewport" instance=ExtResource("1_rfpr5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146469, 1.19209e-07, -0.0456426)
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vwfic")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 10.79, 28.49)
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 18.7055)
-omni_range = 30.412
-omni_shadow_mode = 0
+[node name="accept" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="accept"]
+shape = SubResource("CircleShape2D_gbpf6")
+
+[node name="move" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move"]
+position = Vector2(71, -135)
+shape = SubResource("CircleShape2D_6kbn0")
+
+[node name="test" parent="." instance=ExtResource("2_1sh84")]
+offset_left = -178.0
+offset_top = -207.0
+offset_right = -133.0
+offset_bottom = -162.0
+
+[node name="MenuButton" parent="." instance=ExtResource("2_h3tes")]
+offset_left = -176.0
+offset_top = -112.0
+offset_right = -136.0
+offset_bottom = -72.0
+
+[connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]

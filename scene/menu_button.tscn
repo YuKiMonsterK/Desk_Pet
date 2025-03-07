@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://n6i50bvhbrp0"]
+
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="1_wyhx2"]
+[ext_resource type="Script" path="res://script/menu_button.gd" id="2_ekw0u"]
+
+[node name="MenuButton" instance=ExtResource("1_wyhx2")]
+offset_right = 45.0
+offset_bottom = 45.0
+script = ExtResource("2_ekw0u")
