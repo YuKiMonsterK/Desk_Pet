@@ -1,9 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://n6i50bvhbrp0"]
+[gd_scene load_steps=4 format=3 uid="uid://n6i50bvhbrp0"]
 
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="1_wyhx2"]
 [ext_resource type="Script" path="res://script/menu_button.gd" id="2_ekw0u"]
+[ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="3_l2nqe"]
 
 [node name="MenuButton" instance=ExtResource("1_wyhx2")]
 offset_right = 45.0
 offset_bottom = 45.0
 script = ExtResource("2_ekw0u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" index="0"]
+offset_right = 325.0
+offset_bottom = 471.96
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("3_l2nqe")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="exit" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer" index="0"]
+layout_mode = 2
+
+[connection signal="button_down" from="CanvasLayer/PanelContainer/MarginContainer/GridContainer/exit" to="." method="_on_exit_button_down"]

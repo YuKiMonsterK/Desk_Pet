@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpnvgh4k6k80e"
-path="res://.godot/imported/fHero_.png-1065250d7c0f012b64e3e848f7614486.ctex"
+path="res://.godot/imported/fHero_.png-25939444f75f4c230de77cd6afb5c221.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fHero_.png"
-dest_files=["res://.godot/imported/fHero_.png-1065250d7c0f012b64e3e848f7614486.ctex"]
+source_file="res://assets/測試的圖片資源/fHero_.png"
+dest_files=["res://.godot/imported/fHero_.png-25939444f75f4c230de77cd6afb5c221.ctex"]
 
 [params]
 
