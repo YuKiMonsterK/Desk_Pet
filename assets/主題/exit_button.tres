@@ -11,5 +11,6 @@ texture_margin_bottom = 40.0
 region_rect = Rect2(47, 30, 346, 166)
 
 [resource]
-Button/constants/icon_max_width = 35
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/constants/icon_max_width = 20
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_uocje")
