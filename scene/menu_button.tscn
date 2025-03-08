@@ -8,6 +8,7 @@
 offset_right = 45.0
 offset_bottom = 45.0
 script = ExtResource("2_ekw0u")
+room_mode = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 

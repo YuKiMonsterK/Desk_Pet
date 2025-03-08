@@ -1,7 +1,8 @@
 extends "res://script/base_button.gd"
 
 @onready var canvas_layer = $CanvasLayer
-
+#為之後的房間模式做準備
+@export var room_mode = false
 var box = false
 
 func _ready():
