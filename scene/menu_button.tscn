@@ -15,18 +15,21 @@ room_mode = false
 
 [node name="PanelContainer" type="PanelContainer" parent="." index="0"]
 layout_mode = 0
-offset_left = 35.0
-offset_top = -127.0
-offset_right = 369.0
-offset_bottom = 301.0
+offset_left = -6.0
+offset_top = -113.0
+offset_right = 367.0
+offset_bottom = 315.0
 theme = ExtResource("3_wjdj2")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="exit" type="Button" parent="PanelContainer/MarginContainer" index="0"]
+[node name="exit" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -37,4 +40,14 @@ flat = true
 alignment = 0
 icon_alignment = 2
 
-[connection signal="button_down" from="PanelContainer/MarginContainer/exit" to="." method="_on_exit_button_down"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "狀態欄
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "第一項"
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/MarginContainer/exit" to="." method="_on_exit_button_down"]
