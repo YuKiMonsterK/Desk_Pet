@@ -38,6 +38,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
 
+[gui]
+
+theme/custom="res://assets/主題/theme.tres"
+
 [input]
 
 accept={

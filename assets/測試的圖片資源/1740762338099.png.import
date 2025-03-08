@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdxr7k0flx0jb"
-path="res://.godot/imported/螢幕擷取畫面 2025-02-26 154050.png-c7f0779d3f213c4a9a74f7756525002a.ctex"
+uid="uid://bsvqwwfjnhdne"
+path="res://.godot/imported/1740762338099.png-a191246d26345633131316c3b1ab130f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/螢幕擷取畫面 2025-02-26 154050.png"
-dest_files=["res://.godot/imported/螢幕擷取畫面 2025-02-26 154050.png-c7f0779d3f213c4a9a74f7756525002a.ctex"]
+source_file="res://assets/測試的圖片資源/1740762338099.png"
+dest_files=["res://.godot/imported/1740762338099.png-a191246d26345633131316c3b1ab130f.ctex"]
 
 [params]
 

@@ -8,12 +8,23 @@ var move_p = Vector2i()
 var accept_sec = 0
 var menu_area = false
 
+#為之後的房間模式做準備
+@export var room_mode = false
 
 # 當開始時執行
 func _ready():
-	camera_2d.position.x = 0
-	camera_2d.position.y = 0
-	camera_2d.set_zoom(Vector2(1, 1))
+	var screen_id = DisplayServer.window_get_current_screen()  # 取得目前視窗所在的螢幕 ID
+	var screen_size = DisplayServer.screen_get_size(screen_id)  # 取得該螢幕解析度
+	var screen_position = DisplayServer.screen_get_position(screen_id)  # 取得該螢幕的起始座標
+	var window_size = get_window().size  # 取得視窗大小
+	# 計算該螢幕右下角的正確位置
+	var target_position = Vector2i(
+		screen_position.x + screen_size.x - window_size.x,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
+		screen_position.y + screen_size.y - window_size.y   # 螢幕起始座標 + 螢幕高度 - 視窗高度
+	)
+	# 設定視窗位置
+	get_window().position = target_position
+
 # 每幀執行
 func _process(_delta):
 	#使滑鼠碰撞框每幀都在滑鼠上
@@ -22,7 +33,6 @@ func _process(_delta):
 		#accept_sec += 1
 	#else:
 		#accept_sec = 0
-	
 	if not Input.is_action_pressed("accept") and move_edge:
 			move_edge = false
 # 有輸入時執行

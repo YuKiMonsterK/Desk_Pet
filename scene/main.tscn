@@ -33,10 +33,10 @@ offset_top = -207.0
 offset_right = -133.0
 offset_bottom = -162.0
 
-[node name="MenuButton" parent="." instance=ExtResource("2_h3tes")]
-offset_left = -176.0
-offset_top = -112.0
-offset_right = -136.0
-offset_bottom = -72.0
+[node name="MenuB" parent="." instance=ExtResource("2_h3tes")]
+offset_left = -175.0
+offset_top = -133.0
+offset_right = -131.0
+offset_bottom = -89.0
 
 [connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]

@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://irahf0p4ps7c"]
+
+[ext_resource type="Texture2D" uid="uid://c83kabagbfi0v" path="res://assets/測試的圖片資源/blue_box.png" id="1_t7wgx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uocje"]
+texture = ExtResource("1_t7wgx")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+region_rect = Rect2(47, 30, 346, 166)
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_uocje")
