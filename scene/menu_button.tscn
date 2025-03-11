@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://n6i50bvhbrp0"]
+[gd_scene load_steps=8 format=3 uid="uid://n6i50bvhbrp0"]
 
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="1_wyhx2"]
 [ext_resource type="Script" path="res://script/menu_button.gd" id="2_ekw0u"]
-[ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="3_l2nqe"]
+[ext_resource type="Texture2D" uid="uid://dwqbyu7dsgvm3" path="res://assets/測試的圖片資源/.png" id="3_4aack"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_wjdj2"]
 [ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_e3ubi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uocje"]
+texture = ExtResource("3_4aack")
+region_rect = Rect2(-0.0500488, -3.47157, 105.415, 99.5588)
+
+[sub_resource type="Theme" id="Theme_p8wb3"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_uocje")
 
 [node name="MenuButton" instance=ExtResource("1_wyhx2")]
 offset_right = 45.0
@@ -12,7 +19,7 @@ offset_bottom = 45.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 script = ExtResource("2_ekw0u")
-room_mode = false
+room_mode = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." index="0"]
 layout_mode = 0
@@ -20,7 +27,7 @@ offset_left = 1.0
 offset_top = -118.0
 offset_right = 374.0
 offset_bottom = 310.0
-theme = ExtResource("3_l2nqe")
+theme = SubResource("Theme_p8wb3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" index="0"]
 layout_mode = 2
