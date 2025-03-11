@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dikectsbrqbj6"]
+
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="1_5p1ee"]
+[ext_resource type="Script" path="res://Tomato.gd" id="2_oc7e0"]
+
+[node name="Tomato" instance=ExtResource("1_5p1ee")]
+script = ExtResource("2_oc7e0")
+
+[node name="PanelContainer" parent="." index="0"]
+offset_top = -180.0
+offset_bottom = 248.0
