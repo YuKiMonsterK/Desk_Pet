@@ -3,9 +3,8 @@ extends "res://script/menu_button.gd"
 @onready var icon_container = $PanelContainer
 @onready var collision_shape_2d = $move/CollisionShape2D
 @onready var move = $move
-
+var move_p = Vector2()
 var move_edge = false
-var move_p = Vector2i()
 func _ready():
 	print(room_mode)
 	tomato.self_modulate = Color(1,1,1,1)
@@ -27,7 +26,6 @@ func _process(_delta):
 		collision_shape_2d.position.y = icon_container.position.y +37
 	if not Input.is_action_pressed("accept") and move_edge:
 		move_edge = false
-		print("end")
 func _on_button_press(node_name):
 	print("self = ",self.name," node = ",node_name)
 	if node_name == self.name:
@@ -37,7 +35,7 @@ func _input(event):
 	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
 		icon_container.position = Vector2(DisplayServer.mouse_get_position()) + move_p
 	elif Input.is_action_pressed("accept") and not move_edge:
-		move_p = icon_container.position- Vector2(DisplayServer.mouse_get_position())
+		move_p = icon_container.position - Vector2(DisplayServer.mouse_get_position())
 func _on_mouse_entered():
 	if not room_mode:
 		tomato.self_modulate = Color(0.44,0.44,0.44,1)
@@ -48,5 +46,5 @@ func _on_mouse_exited():
 func _on_exit_pressed():
 	collision_shape_2d.visible = false
 
-func _on_move_area_exited(_area):
+func _on_move_area_exited(area):
 	move_edge = true
