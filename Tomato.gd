@@ -13,7 +13,6 @@ func _ready():
 	SignalManager.connect("button_press", _on_button_press)
 	if not room_mode:
 		tomato.icon = load("res://assets/測試的圖片資源/Tomato.jpg")
-	var window_size = get_window().size  # 取得視窗大小
 	# 計算該螢幕右下角的正確位置
 	#icon_container.position = Vector2i(
 		#window_size.x - 4100,
@@ -35,7 +34,7 @@ func _on_button_press(node_name):
 		panel_container.visible = true
 func _input(event):
 	# 如果按下左鍵並移動，且在移動區邊緣
-	if move_edge:
+	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
 		icon_container.position = Vector2(DisplayServer.mouse_get_position()) + move_p
 	elif Input.is_action_pressed("accept") and not move_edge:
 		move_p = icon_container.position- Vector2(DisplayServer.mouse_get_position())
