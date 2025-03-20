@@ -44,15 +44,7 @@ offset_bottom = 29.0
 [node name="Tomato" parent="." instance=ExtResource("5_loki5")]
 offset_left = 244.0
 offset_top = 21.0
-offset_right = 575.0
-offset_bottom = 145.0
-
-[node name="PanelContainer" parent="Tomato" index="0"]
-offset_left = -2062.07
-offset_top = -613.793
-offset_right = -948.069
-offset_bottom = 404.207
+offset_right = 295.0
+offset_bottom = 42.0
 
 [connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]
-
-[editable path="Tomato"]
