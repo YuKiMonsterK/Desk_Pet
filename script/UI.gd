@@ -20,8 +20,8 @@ func _ready():
 	var window_size = get_window().size  # 取得視窗大小
 	# 計算該螢幕右下角的正確位置
 	var target_position = Vector2i(
-		screen_position.x + screen_size.x - window_size.x,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
-		screen_position.y + screen_size.y - window_size.y   # 螢幕起始座標 + 螢幕高度 - 視窗高度
+		screen_position.x + screen_size.x - window_size.x + 10,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
+		screen_position.y + screen_size.y - window_size.y - 90   # 螢幕起始座標 + 螢幕高度 - 視窗高度
 	)
 	# 設定視窗位置
 	get_window().position = target_position
@@ -36,11 +36,11 @@ func _process(_delta):
 		#accept_sec = 0
 	if not Input.is_action_pressed("accept") and move_edge:
 			move_edge = false
-	if room_mode:
-		tomato.size.x = 331
-		tomato.size.y = 124
-		tomato.position.x = 244
-		tomato.position.y = 21
+	#if room_mode:
+		#tomato.size.x = 500
+		#tomato.size.y = 140
+		#tomato.position.x = 246
+		#tomato.position.y = 24
 # 有輸入時執行
 func _input(event):
 	# 如果按下左鍵並移動，且在移動區邊緣
