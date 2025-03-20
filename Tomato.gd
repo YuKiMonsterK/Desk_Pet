@@ -46,5 +46,5 @@ func _on_mouse_exited():
 func _on_exit_pressed():
 	collision_shape_2d.visible = false
 
-func _on_move_area_exited(area):
+func _on_move_area_exited(_area):
 	move_edge = true
