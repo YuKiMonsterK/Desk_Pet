@@ -24,15 +24,18 @@ room_mode = true
 [node name="PanelContainer" type="PanelContainer" parent="." index="0"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -118.0
-offset_right = 374.0
+offset_top = -40.0
+offset_right = 375.0
 offset_bottom = 310.0
 theme = SubResource("Theme_p8wb3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" index="0"]
 layout_mode = 2
 
-[node name="exit" type="Button" parent="PanelContainer/VBoxContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="exit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -43,14 +46,14 @@ flat = true
 alignment = 0
 icon_alignment = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" index="1"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 text = "狀態欄
 "
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer" index="2"]
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2
 text = "第一項"
 
-[connection signal="button_down" from="PanelContainer/VBoxContainer/exit" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/exit" to="." method="_on_exit_button_down"]
