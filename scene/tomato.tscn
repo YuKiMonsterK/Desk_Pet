@@ -18,10 +18,38 @@ offset_top = 0.0
 offset_right = 290.0
 offset_bottom = 255.0
 
-[node name="MarginContainer" parent="PanelContainer" index="0"]
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 75
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 115
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer2" index="0"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer2/GridContainer" index="0"]
+layout_mode = 2
+text = "專注時間
+"
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer2/GridContainer" index="1"]
+layout_mode = 2
+text = "20"
+alignment = 1
+
+[node name="MarginContainer" parent="PanelContainer" index="1"]
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 65
+
+[node name="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+theme_override_constants/separation = -15
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+text = "番茄鐘"
 
 [node name="move" type="Area2D" parent="." index="1"]
 position = Vector2(-0.000263083, -0.000210466)
@@ -29,6 +57,8 @@ position = Vector2(-0.000263083, -0.000210466)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="move" index="0"]
 position = Vector2(141, 25.0002)
 shape = SubResource("CapsuleShape2D_arwtj")
+
+[node name="Timer" type="Timer" parent="." index="2"]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -24,6 +24,8 @@ func _process(_delta):
 		collision_shape_2d.visible = true
 		collision_shape_2d.position.x = icon_container.position.x +149 
 		collision_shape_2d.position.y = icon_container.position.y +37
+	else:
+		collision_shape_2d.visible = false
 	if not Input.is_action_pressed("accept") and move_edge:
 		move_edge = false
 func _on_button_press(node_name):
@@ -42,9 +44,6 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	tomato.self_modulate = Color(1,1,1,1)
-
-func _on_exit_pressed():
-	collision_shape_2d.visible = false
 
 func _on_move_area_exited(_area):
 	move_edge = true
