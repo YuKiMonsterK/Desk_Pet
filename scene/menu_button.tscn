@@ -31,6 +31,7 @@ theme = SubResource("Theme_p8wb3")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" index="0"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 130
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 125

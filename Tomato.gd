@@ -3,6 +3,14 @@ extends "res://script/menu_button.gd"
 @onready var icon_container = $PanelContainer
 @onready var collision_shape_2d = $move/CollisionShape2D
 @onready var move = $move
+@onready var confirm = $PanelContainer/MarginContainer/VBoxContainer/confirm
+@onready var fous = $PanelContainer/TimeSetting/GridContainer/LineEdit
+@onready var rest = $PanelContainer/TimeSetting/GridContainer/LineEdit2
+@onready var loop = $PanelContainer/TimeSetting/GridContainer/LineEdit3
+
+var fous_t = 20
+var rest_t = 5
+var loop_t = 4
 var move_p = Vector2()
 var move_edge = false
 func _ready():
@@ -18,7 +26,6 @@ func _ready():
 		#window_size.y - 2000 
 	#)
 	collision_shape_2d.visible = false
-	
 func _process(_delta):
 	if icon_container.visible:
 		collision_shape_2d.visible = true
@@ -47,3 +54,13 @@ func _on_mouse_exited():
 
 func _on_move_area_exited(_area):
 	move_edge = true
+
+
+func _on_confirm_button_down():
+	print("time")
+	if fous.text.is_valid_int() and rest.text.is_valid_int() and loop.text.is_valid_int():
+		fous_t = fous.text
+		rest_t = rest.text
+		loop_t = loop.text
+	else:
+		print("請勿輸入文字")
