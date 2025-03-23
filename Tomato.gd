@@ -63,4 +63,4 @@ func _on_confirm_button_down():
 		rest_t = rest.text
 		loop_t = loop.text
 	else:
-		print("請勿輸入文字")
+		SignalManager.emit_signal("error","請勿輸入文字")

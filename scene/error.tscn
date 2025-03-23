@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgo3f5da1yvqu"]
+
+[ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="1_ntra2"]
+[ext_resource type="Script" path="res://script/error_box.gd" id="2_2b50p"]
+[ext_resource type="Texture2D" uid="uid://blv8jwqkm7oih" path="res://assets/測試的圖片資源/pink.png" id="2_xqnbt"]
+[ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_v5aj4"]
+[ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_yhc8l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jc1jo"]
+texture = ExtResource("2_xqnbt")
+texture_margin_left = 20.0
+texture_margin_top = 25.0
+texture_margin_right = 25.0
+texture_margin_bottom = 20.0
+
+[node name="Panel" type="Panel"]
+offset_right = 314.0
+offset_bottom = 200.0
+theme = ExtResource("1_ntra2")
+theme_override_styles/panel = SubResource("StyleBoxTexture_jc1jo")
+script = ExtResource("2_2b50p")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 28.0
+offset_right = 289.0
+offset_bottom = 52.0
+theme = ExtResource("3_v5aj4")
+icon = ExtResource("4_yhc8l")
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 48.0
+offset_right = 285.0
+offset_bottom = 171.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Error"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "測試文字"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
