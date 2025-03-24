@@ -109,3 +109,4 @@ shape = SubResource("CapsuleShape2D_arwtj")
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
 [connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/confirm" to="." method="_on_confirm_button_down"]
 [connection signal="area_exited" from="move" to="." method="_on_move_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

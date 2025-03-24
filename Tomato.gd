@@ -7,17 +7,20 @@ extends "res://script/menu_button.gd"
 @onready var fous = $PanelContainer/TimeSetting/GridContainer/LineEdit
 @onready var rest = $PanelContainer/TimeSetting/GridContainer/LineEdit2
 @onready var loop = $PanelContainer/TimeSetting/GridContainer/LineEdit3
+@onready var timer = $Timer
 
 var fous_t = 20
 var rest_t = 5
 var loop_t = 4
 var move_p = Vector2()
 var move_edge = false
+var loop_cur = 0
+var current = "studing"
 func _ready():
 	print(room_mode)
-	tomato.self_modulate = Color(1,1,1,1)
-	panel_container.visible = false
+	panel_container.self_modulate = Color(1,1,1,1)
 	SignalManager.connect("button_press", _on_button_press)
+	panel_container.visible = false
 	if not room_mode:
 		tomato.icon = load("res://assets/測試的圖片資源/Tomato.jpg")
 	# 計算該螢幕右下角的正確位置
@@ -55,12 +58,28 @@ func _on_mouse_exited():
 func _on_move_area_exited(_area):
 	move_edge = true
 
-
 func _on_confirm_button_down():
 	print("time")
 	if fous.text.is_valid_int() and rest.text.is_valid_int() and loop.text.is_valid_int():
-		fous_t = fous.text
-		rest_t = rest.text
-		loop_t = loop.text
+		fous_t = int(fous.text)
+		rest_t = int(rest.text)
+		loop_t = int(loop.text)
+		timer.wait_time = int(fous_t)
+		timer.start()
 	else:
 		SignalManager.emit_signal("error","請勿輸入文字")
+
+func _on_timer_timeout():
+	if loop_cur <= loop_t*2 -1:
+		if current == "studing":
+			timer.wait_time = rest_t
+			current = "rest"
+		else:
+			timer.wait_time = fous_t
+			current = "studing"
+		loop_cur += 1
+		timer.start()
+	else:
+		print("end")
+		loop_cur = 0
+		timer.stop()
