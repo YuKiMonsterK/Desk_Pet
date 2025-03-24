@@ -1,7 +1,7 @@
-extends Panel
+extends PanelContainer
 @onready var panel = $"."
-@onready var message = $VBoxContainer/Label2
-@onready var button = $Button
+@onready var message = $MarginContainer/VBoxContainer/Label2
+@onready var button = $MarginContainer/VBoxContainer/Button
 @onready var timer = $Timer
 
 var new_style = StyleBoxTexture.new()
@@ -24,15 +24,16 @@ func _on_button_pressed():
 	panel.visible = false
 
 func _process(_delta):
-	if timer.time_left == 0 and panel.visible:
+	if timer.time_left == 0 and panel.visible :
 		if style == "pink" and loop < 2:
 			new_style.texture = load("res://assets/測試的圖片資源/box.png")
 			timer.start()
 			style = "blue"
+			loop+=1
 		elif loop < 2:
 			new_style.texture = load("res://assets/測試的圖片資源/pink.png")
 			timer.start()
-			loop+=1
 			style = "pink"
 		panel.add_theme_stylebox_override("panel", new_style)
 		timer.wait_time = 0.1
+	

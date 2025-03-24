@@ -49,9 +49,9 @@ offset_right = 295.0
 offset_bottom = 42.0
 
 [node name="Panel" parent="." instance=ExtResource("5_n1shk")]
-offset_left = -162.0
-offset_top = -88.0
-offset_right = 152.0
-offset_bottom = 112.0
+offset_left = -183.0
+offset_top = -84.0
+offset_right = 131.0
+offset_bottom = 116.0
 
 [connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]
