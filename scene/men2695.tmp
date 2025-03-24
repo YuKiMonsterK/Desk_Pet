@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://n6i50bvhbrp0"]
+
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="1_wyhx2"]
+[ext_resource type="Script" path="res://script/menu_button.gd" id="2_ekw0u"]
+[ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="3_l2nqe"]
+[ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_wjdj2"]
+[ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_e3ubi"]
+
+[node name="MenuButton" instance=ExtResource("1_wyhx2")]
+offset_right = 45.0
+offset_bottom = 45.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+script = ExtResource("2_ekw0u")
+room_mode = false
+
+[node name="PanelContainer" type="PanelContainer" parent="." index="0"]
+visible = false
+layout_mode = 0
+offset_left = -6.0
+offset_top = -113.0
+offset_right = 367.0
+offset_bottom = 315.0
+theme = ExtResource("3_l2nqe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" index="0"]
+layout_mode = 2
+
+[node name="exit" type="Button" parent="PanelContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_wjdj2")
+icon = ExtResource("4_e3ubi")
+flat = true
+alignment = 0
+icon_alignment = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "狀態欄
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "第一項"
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/exit" to="." method="_on_exit_button_down"]

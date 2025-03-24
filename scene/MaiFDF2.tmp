@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://qj2rdpcwsg37"]
+
+[ext_resource type="Script" path="res://script/UI.gd" id="1_vwfic"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_1sh84"]
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="2_h3tes"]
+[ext_resource type="Texture2D" uid="uid://djxaj67t1qugs" path="res://assets/測試的圖片資源/menu.png" id="4_i376c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbpf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
+radius = 49.0102
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vwfic")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="accept" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="accept"]
+shape = SubResource("CircleShape2D_gbpf6")
+
+[node name="move" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move"]
+position = Vector2(71, -135)
+shape = SubResource("CircleShape2D_6kbn0")
+
+[node name="test" parent="." instance=ExtResource("2_1sh84")]
+offset_left = -178.0
+offset_top = -207.0
+offset_right = -133.0
+offset_bottom = -162.0
+
+[node name="MenuB" parent="." instance=ExtResource("2_h3tes")]
+offset_left = -182.0
+offset_top = -127.0
+offset_right = -127.0
+offset_bottom = -70.0
+theme_override_constants/icon_max_width = 0
+icon = ExtResource("4_i376c")
+flat = true
+icon_alignment = 1
+expand_icon = true
+room_mode = false
+
+[connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]

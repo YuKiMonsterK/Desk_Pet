@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var accept = $"accept"
 @onready var camera_2d = $"Camera2D"
+@onready var tomato = $Tomato
 
 var move_edge = false
 var move_p = Vector2i()
@@ -9,7 +10,7 @@ var accept_sec = 0
 var menu_area = false
 
 #為之後的房間模式做準備
-@export var room_mode = false
+var room_mode = true
 
 # 當開始時執行
 func _ready():
@@ -19,12 +20,12 @@ func _ready():
 	var window_size = get_window().size  # 取得視窗大小
 	# 計算該螢幕右下角的正確位置
 	var target_position = Vector2i(
-		screen_position.x + screen_size.x - window_size.x,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
-		screen_position.y + screen_size.y - window_size.y   # 螢幕起始座標 + 螢幕高度 - 視窗高度
+		screen_position.x + screen_size.x - window_size.x + 10,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
+		screen_position.y + screen_size.y - window_size.y - 90   # 螢幕起始座標 + 螢幕高度 - 視窗高度
 	)
 	# 設定視窗位置
 	get_window().position = target_position
-
+	SignalManager.connect("room_mode", _on_room_mode)
 # 每幀執行
 func _process(_delta):
 	#使滑鼠碰撞框每幀都在滑鼠上
@@ -35,6 +36,11 @@ func _process(_delta):
 		#accept_sec = 0
 	if not Input.is_action_pressed("accept") and move_edge:
 			move_edge = false
+	#if room_mode:
+		#tomato.size.x = 500
+		#tomato.size.y = 140
+		#tomato.position.x = 246
+		#tomato.position.y = 24
 # 有輸入時執行
 func _input(event):
 	# 如果按下左鍵並移動，且在移動區邊緣
@@ -50,3 +56,5 @@ func _input(event):
 func _on_move_mouse_exited():
 	move_edge = true
 
+func _on_room_mode():
+	room_mode = true
