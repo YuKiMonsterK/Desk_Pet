@@ -13,10 +13,10 @@ offset_bottom = 104.0
 script = ExtResource("2_oc7e0")
 
 [node name="PanelContainer" parent="." index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 290.0
-offset_bottom = 255.0
+offset_left = -328.0
+offset_top = -163.0
+offset_right = -37.0
+offset_bottom = 150.0
 
 [node name="TimeSetting" type="MarginContainer" parent="PanelContainer" index="0"]
 layout_mode = 2

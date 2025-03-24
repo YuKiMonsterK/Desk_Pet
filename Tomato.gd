@@ -23,11 +23,6 @@ func _ready():
 	panel_container.visible = false
 	if not room_mode:
 		tomato.icon = load("res://assets/測試的圖片資源/Tomato.jpg")
-	# 計算該螢幕右下角的正確位置
-	#icon_container.position = Vector2i(
-		#window_size.x - 4100,
-		#window_size.y - 2000 
-	#)
 	collision_shape_2d.visible = false
 func _process(_delta):
 	if icon_container.visible:
