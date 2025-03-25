@@ -14,6 +14,7 @@ extends "res://script/menu_button.gd"
 @onready var now_mode = $PanelContainer/start_tomato/VBoxContainer/now_mode
 @onready var left_time = $PanelContainer/start_tomato/VBoxContainer/left_time
 @onready var loop_left = $PanelContainer/start_tomato/VBoxContainer/loop_left
+@onready var stop = $PanelContainer/start_tomato/VBoxContainer/stop
 
 
 var fous_t = 20
@@ -45,7 +46,7 @@ func _process(_delta):
 	if not Input.is_action_pressed("accept") and move_edge:
 		move_edge = false
 	if timer.time_left > 0:
-		left_time.text = "剩餘時間："+ str(ceil(timer.time_left))
+		left_time.text = "剩餘時間：" + str(ceil(timer.time_left))
 		now_mode.text = current
 		loop_left.text = "番茄次數：" + str(loop_cur/2) + "/" + str(loop_t)
 func _on_button_press(node_name):
@@ -100,3 +101,7 @@ func _on_timer_timeout():
 
 func _on_exit_button():
 	timer.stop()
+
+
+func _on_stop_pressed():
+	timer.paused = true
