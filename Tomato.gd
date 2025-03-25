@@ -73,6 +73,7 @@ func _on_timer_timeout():
 			timer.wait_time = fous_t
 			current = "studing"
 		loop_cur += 1
+		print(current)
 		timer.start()
 	else:
 		print("end")
