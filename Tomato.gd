@@ -4,11 +4,17 @@ extends "res://script/menu_button.gd"
 @onready var icon_container = $PanelContainer
 @onready var collision_shape_2d = $move/CollisionShape2D
 @onready var move = $move
-@onready var confirm = $PanelContainer/MarginContainer/VBoxContainer/confirm
-@onready var fous = $PanelContainer/TimeSetting/GridContainer/LineEdit
-@onready var rest = $PanelContainer/TimeSetting/GridContainer/LineEdit2
-@onready var loop = $PanelContainer/TimeSetting/GridContainer/LineEdit3
+@onready var confirm = $PanelContainer/TimeSetting/VBoxContainer/confirm
+@onready var fous = $PanelContainer/TimeSetting/VBoxContainer/GridContainer/LineEdit
+@onready var rest = $PanelContainer/TimeSetting/VBoxContainer/GridContainer/LineEdit2
+@onready var loop = $PanelContainer/TimeSetting/VBoxContainer/GridContainer/LineEdit3
 @onready var timer = $Timer
+@onready var start_tomato = $PanelContainer/start_tomato
+@onready var time_setting = $PanelContainer/TimeSetting
+@onready var now_mode = $PanelContainer/start_tomato/VBoxContainer/now_mode
+@onready var left_time = $PanelContainer/start_tomato/VBoxContainer/left_time
+@onready var loop_left = $PanelContainer/start_tomato/VBoxContainer/loop_left
+
 
 var fous_t = 20
 var rest_t = 5
@@ -16,7 +22,7 @@ var loop_t = 4
 var move_p = Vector2()
 var move_edge = false
 var loop_cur = 0
-var current = "studing"
+var current = "讀書"
 
 func _ready():
 	print(room_mode)
@@ -26,6 +32,8 @@ func _ready():
 	if not room_mode:
 		tomato.icon = load("res://assets/測試的圖片資源/Tomato.jpg")
 	collision_shape_2d.visible = false
+	start_tomato.visible = false
+	time_setting.visible = true
 	
 func _process(_delta):
 	if icon_container.visible:
@@ -36,7 +44,10 @@ func _process(_delta):
 		collision_shape_2d.visible = false
 	if not Input.is_action_pressed("accept") and move_edge:
 		move_edge = false
-
+	if timer.time_left > 0:
+		left_time.text = "剩餘時間："+ str(ceil(timer.time_left))
+		now_mode.text = current
+		loop_left.text = "番茄次數：" + str(loop_cur/2) + "/" + str(loop_t)
 func _on_button_press(node_name):
 	print("self = ",self.name," node = ",node_name)
 	if node_name == self.name:
@@ -65,20 +76,21 @@ func _on_confirm_button_down():
 		rest_t = int(rest.text)
 		loop_t = int(loop.text)
 		timer.wait_time = int(fous_t)
+		time_setting.visible = false
+		start_tomato.visible = true
 		timer.start()
 	else:
 		SignalManager.emit_signal("error","請勿輸入文字")
 
 func _on_timer_timeout():
 	if loop_cur <= loop_t*2 -1:
-		if current == "studing":
+		if current == "讀書":
 			timer.wait_time = rest_t
-			current = "rest"
+			current = "休息"
 		else:
 			timer.wait_time = fous_t
-			current = "studing"
+			current = "讀書"
 		loop_cur += 1
-		print(current)
 		timer.start()
 	else:
 		print("end")
