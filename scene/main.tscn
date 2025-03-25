@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://bcbhdhcnbs164"]
 
-[ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_vwfic"]
+[ext_resource type="Script" path="res://script/UI.gd" id="1_vwfic"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_1sh84"]
 [ext_resource type="Texture2D" uid="uid://bdxr7k0flx0jb" path="res://assets/測試的圖片資源/螢幕擷取畫面 2025-02-26 154050.png" id="2_x7tsm"]
 [ext_resource type="PackedScene" uid="uid://dikectsbrqbj6" path="res://scene/tomato.tscn" id="5_loki5"]
 [ext_resource type="PackedScene" uid="uid://bgo3f5da1yvqu" path="res://scene/error.tscn" id="5_n1shk"]
-[ext_resource type="PackedScene" uid="uid://c31ojwf4tl6by" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
+[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbpf6"]
 
