@@ -1,14 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://irahf0p4ps7c"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://irahf0p4ps7c"]
 
-[ext_resource type="Texture2D" uid="uid://cn1c0sm1mm2a2" path="res://assets/測試的圖片資源/box.png" id="1_o3lf4"]
 [ext_resource type="Texture2D" uid="uid://c83kabagbfi0v" path="res://assets/測試的圖片資源/blue_box.png" id="1_t7wgx"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ffln"]
-texture = ExtResource("1_o3lf4")
-texture_margin_left = 25.0
-texture_margin_top = 25.0
-texture_margin_right = 25.0
-texture_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uocje"]
 texture = ExtResource("1_t7wgx")
@@ -19,5 +11,4 @@ texture_margin_bottom = 40.0
 region_rect = Rect2(47, 30, 346, 166)
 
 [resource]
-Panel/styles/panel = SubResource("StyleBoxTexture_3ffln")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_uocje")

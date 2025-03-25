@@ -70,7 +70,6 @@ func _on_move_area_exited(_area):
 	move_edge = true
 
 func _on_confirm_button_down():
-	print("time")
 	if fous.text.is_valid_int() and rest.text.is_valid_int() and loop.text.is_valid_int():
 		fous_t = int(fous.text)
 		rest_t = int(rest.text)
@@ -91,8 +90,13 @@ func _on_timer_timeout():
 			timer.wait_time = fous_t
 			current = "讀書"
 		loop_cur += 1
+		print(current)
 		timer.start()
 	else:
 		print("end")
 		loop_cur = 0
 		timer.stop()
+
+
+func _on_exit_button():
+	timer.stop()
