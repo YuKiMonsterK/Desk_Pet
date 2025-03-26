@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bgo3f5da1yvqu"]
 
-[ext_resource type="Script" path="res://script/error_box.gd" id="2_2b50p"]
+[ext_resource type="Script" uid="uid://jk64nc4xqf3d" path="res://script/error_box.gd" id="2_2b50p"]
 [ext_resource type="Texture2D" uid="uid://cn1c0sm1mm2a2" path="res://assets/測試的圖片資源/box.png" id="2_dkn6r"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_v5aj4"]
 [ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_yhc8l"]

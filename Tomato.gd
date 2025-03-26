@@ -102,6 +102,5 @@ func _on_timer_timeout():
 func _on_exit_button():
 	timer.stop()
 
-
 func _on_stop_pressed():
 	timer.paused = true

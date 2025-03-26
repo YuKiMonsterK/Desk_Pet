@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxfcd28jtyxan"]
+
+[ext_resource type="PackedScene" uid="uid://dwyikgstfgtny" path="res://assets/background.glb" id="1_ov5lu"]
+
+[node name="room" instance=ExtResource("1_ov5lu")]
+
+[node name="Camera3D" type="Camera3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, 0, 9.705, 35.105)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, 0, 9.705, 0.962181)
+light_energy = 0.687
+light_angular_distance = 56.51
