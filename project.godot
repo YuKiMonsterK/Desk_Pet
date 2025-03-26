@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Desk pet"
 run/main_scene="res://scene/Main.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 0)
 config/icon="res://icon.svg"
 
