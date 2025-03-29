@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcbhdhcnbs164"]
+[gd_scene load_steps=10 format=3 uid="uid://bcbhdhcnbs164"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_vwfic"]
 [ext_resource type="PackedScene" uid="uid://cxfcd28jtyxan" path="res://scene/room.tscn" id="2_o6q0f"]
-[ext_resource type="PackedScene" uid="uid://dikectsbrqbj6" path="res://scene/tomato.tscn" id="5_loki5"]
-[ext_resource type="PackedScene" uid="uid://bgo3f5da1yvqu" path="res://scene/error.tscn" id="5_n1shk"]
+[ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="5_mnmej"]
 [ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="6_s5yxy"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="7_s5yxy"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("SubViewport")
@@ -18,14 +19,16 @@ radius = 28.4429
 script = ExtResource("1_vwfic")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(862, 592)
+size = Vector2i(997, 702)
 
 [node name="room" parent="SubViewport" instance=ExtResource("2_o6q0f")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-8, -23)
-scale = Vector2(1, 0.809122)
+position = Vector2(-2.00002, -0.499994)
+scale = Vector2(1.0091, 1.09058)
 texture = SubResource("ViewportTexture_s5yxy")
+region_enabled = true
+region_rect = Rect2(2.75084, 231.053, 989.732, 276.715)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 1)
@@ -44,23 +47,34 @@ collision_layer = 2
 position = Vector2(103, -57)
 shape = SubResource("CircleShape2D_6kbn0")
 
-[node name="Tomato" parent="." instance=ExtResource("5_loki5")]
-offset_left = 218.0
-offset_top = 1.0
-offset_right = 269.0
-offset_bottom = 22.0
-
-[node name="Panel" parent="." instance=ExtResource("5_n1shk")]
-visible = false
-offset_left = -183.0
-offset_top = -84.0
-offset_right = 131.0
-offset_bottom = 116.0
-
 [node name="DropdownButton" parent="." instance=ExtResource("6_o6q0f")]
-offset_left = 370.0
-offset_top = 307.0
-offset_right = 370.0
-offset_bottom = 307.0
+offset_left = 279.0
+offset_top = -73.0
+offset_right = 387.0
+offset_bottom = -40.0
+
+[node name="Timer" parent="." instance=ExtResource("5_mnmej")]
+offset_left = -79.0
+offset_top = -106.0
+offset_right = 180.0
+offset_bottom = 118.0
+
+[node name="menu" parent="." instance=ExtResource("6_s5yxy")]
+offset_left = -479.0
+offset_top = -66.0
+offset_right = -223.0
+offset_bottom = 137.0
+
+[node name="menu_button" parent="." instance=ExtResource("7_s5yxy")]
+offset_left = -307.0
+offset_top = -88.0
+offset_right = -250.0
+offset_bottom = -67.0
+
+[node name="Timer_button" parent="." instance=ExtResource("7_s5yxy")]
+offset_left = 277.0
+offset_top = 30.0
+offset_right = 329.0
+offset_bottom = 51.0
 
 [connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]

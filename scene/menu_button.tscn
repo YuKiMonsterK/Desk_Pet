@@ -1,48 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://n6i50bvhbrp0"]
+[gd_scene load_steps=4 format=3 uid="uid://n6i50bvhbrp0"]
 
-[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="1_wyhx2"]
 [ext_resource type="Script" uid="uid://bojvlm3mt0b44" path="res://script/menu_button.gd" id="2_ekw0u"]
-[ext_resource type="Texture2D" uid="uid://dwqbyu7dsgvm3" path="res://assets/測試的圖片資源/.png" id="3_4aack"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_wjdj2"]
 [ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_e3ubi"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uocje"]
-texture = ExtResource("3_4aack")
-region_rect = Rect2(-0.0500488, -3.47157, 105.415, 99.5588)
-
-[sub_resource type="Theme" id="Theme_p8wb3"]
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_uocje")
-
-[node name="MenuButton" instance=ExtResource("1_wyhx2")]
-offset_right = 45.0
-offset_bottom = 45.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
+[node name="PanelContainer" type="PanelContainer"]
+offset_top = -2.0
+offset_right = 258.0
+offset_bottom = 199.0
 script = ExtResource("2_ekw0u")
-room_mode = true
 
-[node name="PanelContainer" type="PanelContainer" parent="." index="0"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -40.0
-offset_right = 375.0
-offset_bottom = 310.0
-theme = SubResource("Theme_p8wb3")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 130
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 125
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = -20
 
-[node name="exit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("3_wjdj2")
 icon = ExtResource("4_e3ubi")
@@ -50,10 +29,12 @@ flat = true
 alignment = 0
 icon_alignment = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "狀態欄
-"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "狀態欄"
 horizontal_alignment = 1
 
-[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/exit" to="." method="_on_exit_button_down"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]

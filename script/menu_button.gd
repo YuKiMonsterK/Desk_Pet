@@ -1,6 +1,6 @@
-extends "res://script/base_button.gd"
+extends Control
 
-@onready var panel_container = $PanelContainer
+@onready var panel_container: PanelContainer = $"."
 
 #為之後的房間模式做準備
 @export var room_mode = true
@@ -14,11 +14,11 @@ func _ready():
 func _on_button_press(node_name):
 	#測試按鈕與對應訊息
 	print("self = ",self.name," node = ",node_name)
-	if node_name == self.name:
+	if node_name == self.name + "_button":
 		panel_container.visible = true
-
-func _on_exit_button_down():
-	panel_container.visible = false
 
 func _on_room_mode():
 	room_mode = true
+
+func _on_exit_pressed() -> void:
+	panel_container.visible = false

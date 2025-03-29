@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var accept = $"accept"
 @onready var camera_2d = $"Camera2D"
-@onready var tomato = $Tomato
 
 var move_edge = false
 var move_p = Vector2i()
