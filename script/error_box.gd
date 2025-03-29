@@ -34,6 +34,6 @@ func _process(_delta):
 			new_style.texture = load("res://assets/測試的圖片資源/pink.png")
 			timer.start()
 			style = "pink"
-		panel.add_theme_stylebox_override("panel", new_style)
+		#panel.add_theme_stylebox_override("panel", new_style)
 		timer.wait_time = 0.1
 	

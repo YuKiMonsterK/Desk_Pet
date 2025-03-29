@@ -18,7 +18,7 @@ func _ready():
 	update_options()  # 更新选项列表
 	
 	# 连接主按钮信号
-	main_button.pressed.connect(_on_main_button_pressed)
+	#main_button.pressed.connect(_on_main_button_pressed)
 
 # 更新选项列表函数
 func update_options():

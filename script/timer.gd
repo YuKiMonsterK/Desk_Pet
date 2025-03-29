@@ -11,37 +11,33 @@ var is_running: bool = false  # 计时器是否在运行
 var current_session: int = 0  # 当前工作周期计数
 
 @onready var timer_node = $TimerNode
-@onready var timer_label = $TimerLabel
-@onready var start_button = $StartButton
-@onready var reset_button = $ResetButton
-@onready var settings_button = $SettingsButton
+@onready var timer_label = $PanelContainer/MarginContainer/VBoxContainer/TimerLabel
+@onready var start_button = $PanelContainer/MarginContainer/VBoxContainer/StartButton
+@onready var reset_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton
+@onready var settings_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton
 @onready var settings_panel = $SettingsPanel
 @onready var work_time_spin = $SettingsPanel/VBoxContainer/WorkTimeSpinBox
 @onready var break_time_spin = $SettingsPanel/VBoxContainer/BreakTimeSpinBox
 @onready var long_break_time_spin = $SettingsPanel/VBoxContainer/LongBreakTimeSpinBox
 @onready var sessions_spin = $SettingsPanel/VBoxContainer/SessionsSpinBox
 @onready var save_button = $SettingsPanel/VBoxContainer/SaveButton
+@onready var panel_container: PanelContainer = $PanelContainer
+@onready var exit_button: Button = $exit_button
 
 func _ready():
 	# 初始化时间为工作时间（分钟转换为秒）
 	current_time = work_time * 60
 	update_display()
-	
-	# 连接按钮信号
-	start_button.pressed.connect(_on_start_button_pressed)
-	reset_button.pressed.connect(_on_reset_button_pressed)
-	settings_button.pressed.connect(_on_settings_button_pressed)
-	save_button.pressed.connect(_on_save_button_pressed)
-	
-	# 连接计时器信号
-	timer_node.timeout.connect(_on_timer_timeout)
-	
+	settings_panel.visible = false
+	SignalManager.connect("button_press", _on_button_press)
 	# 初始化设置面板的值
 	work_time_spin.value = work_time
 	break_time_spin.value = break_time
 	long_break_time_spin.value = long_break_time
 	sessions_spin.value = sessions_before_long_break
-
+	panel_container.visible = false
+	exit_button.visible = false
+	
 func _on_timer_timeout():
 	current_time -= 1
 	update_display()
@@ -110,3 +106,13 @@ func _on_timer_complete():
 		current_time = work_time * 60  # 使用工作时间（分钟转换为秒）
 	
 	update_display() 
+
+func _on_exit_button_pressed() -> void:
+	panel_container.visible = false
+	settings_panel = false
+	exit_button.visible = false
+
+func _on_button_press(node_name):
+	if node_name == self.name + "_button":
+		panel_container.visible = true
+		exit_button.visible = true
