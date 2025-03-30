@@ -1,57 +1,41 @@
 extends Node2D
 
-@onready var accept = $"accept"
-@onready var camera_2d = $"Camera2D"
+@onready var game_window: Node2D = $game_window
+@onready var camera_2d: Camera2D = $Camera2D
+@onready var accept: Area2D = $game_window/accept
+@onready var collision_polygon_2d: CollisionPolygon2D = $game_window/click_area/CollisionPolygon2D
+@onready var background: Sprite2D = $game_window/Sprite2D
 
 var move_edge = false
 var move_p = Vector2i()
 var accept_sec = 0
 var menu_area = false
 
-#為之後的房間模式做準備
-var room_mode = true
+var room_mode = true  # 為之後的房間模式做準備
 
-# 當開始時執行
 func _ready():
-	var screen_id = DisplayServer.window_get_current_screen()  # 取得目前視窗所在的螢幕 ID
-	var screen_size = DisplayServer.screen_get_size(screen_id)  # 取得該螢幕解析度
-	var screen_position = DisplayServer.screen_get_position(screen_id)  # 取得該螢幕的起始座標
-	var window_size = get_window().size  # 取得視窗大小
-	# 計算該螢幕右下角的正確位置
-	var target_position = Vector2i(
-		screen_position.x + screen_size.x - window_size.x + 10,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
-		screen_position.y + screen_size.y - window_size.y - 90   # 螢幕起始座標 + 螢幕高度 - 視窗高度
-	)
-	# 設定視窗位置
-	get_window().position = target_position
+	var screen_size = DisplayServer.screen_get_size()
 	SignalManager.connect("room_mode", _on_room_mode)
-# 每幀執行
-func _process(_delta):
-	#使滑鼠碰撞框每幀都在滑鼠上
-	accept.position = Vector2i(get_global_mouse_position())
-	#if Input.is_action_pressed("accept"):
-		#accept_sec += 1
-	#else:
-		#accept_sec = 0
-	if not Input.is_action_pressed("accept") and move_edge:
-			move_edge = false
-	#if room_mode:
-		#tomato.size.x = 500
-		#tomato.size.y = 140
-		#tomato.position.x = 246
-		#tomato.position.y = 24
-# 有輸入時執行
-func _input(event):
-	# 如果按下左鍵並移動，且在移動區邊緣
-	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
-		#更改遊戲窗口至左鍵位置
-		get_window().position = DisplayServer.mouse_get_position() + move_p
-	# 如果只按下左鍵，且在移動區邊緣
-	# 此處缺點：平常按確定也會計算move_
-	elif Input.is_action_pressed("accept") and not move_edge:
-		move_p = get_window().position - DisplayServer.mouse_get_position()
 	
-# 如果到移動區的邊緣
+	
+func _process(_delta):
+	accept.position = Vector2i(get_global_mouse_position())
+	if not Input.is_action_pressed("accept") and move_edge:
+		move_edge = false
+	collision_polygon_2d.position = background.position
+	if not is_instance_valid(collision_polygon_2d):
+		return
+	var click_polygon: PackedVector2Array = collision_polygon_2d.polygon.duplicate()
+	for i in range(click_polygon.size()):
+		click_polygon[i] = collision_polygon_2d.to_global(click_polygon[i])
+	get_window().mouse_passthrough_polygon = click_polygon
+
+func _input(event):
+	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
+		game_window.position = Vector2(DisplayServer.mouse_get_position()) + move_p
+	elif Input.is_action_pressed("accept") and not move_edge:
+		move_p = game_window.position - Vector2(DisplayServer.mouse_get_position())
+
 func _on_move_mouse_exited():
 	move_edge = true
 
