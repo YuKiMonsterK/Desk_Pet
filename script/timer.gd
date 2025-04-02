@@ -111,6 +111,7 @@ func _on_exit_button_pressed() -> void:
 	panel_container.visible = false
 	settings_panel = false
 	exit_button.visible = false
+	SignalManager.emit_signal("exit_press", self.name)
 
 func _on_button_press(node_name):
 	if node_name == self.name + "_button":
