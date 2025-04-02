@@ -101,6 +101,6 @@ func _on_timer_timeout():
 
 func _on_exit_button():
 	timer.stop()
-
+	SignalManager.emit_signal("exit_press", self.name)
 func _on_stop_pressed():
 	timer.paused = true

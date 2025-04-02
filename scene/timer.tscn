@@ -59,17 +59,16 @@ text = "設置"
 [node name="TimerNode" type="Timer" parent="."]
 
 [node name="SettingsPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -346.0
-offset_top = -287.0
-offset_right = -50.0
-offset_bottom = 67.0
+offset_left = -78.5
+offset_top = -159.0
+offset_right = 82.5
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -78,17 +77,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-text = "工作时间（分钟）"
+text = "工作時間（分鐘）"
 horizontal_alignment = 1
 
 [node name="WorkTimeSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
@@ -99,7 +98,7 @@ value = 25.0
 
 [node name="Label2" type="Label" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-text = "休息时间（分钟）"
+text = "休息時間（分鐘）"
 horizontal_alignment = 1
 
 [node name="BreakTimeSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
@@ -110,7 +109,7 @@ value = 5.0
 
 [node name="Label3" type="Label" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-text = "长休息时间（分钟）"
+text = "長休息時間（分鐘）"
 horizontal_alignment = 1
 
 [node name="LongBreakTimeSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
@@ -121,7 +120,7 @@ value = 15.0
 
 [node name="Label4" type="Label" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-text = "工作周期数"
+text = "工作週期數"
 horizontal_alignment = 1
 
 [node name="SessionsSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]

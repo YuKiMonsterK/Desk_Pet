@@ -1,59 +1,54 @@
 extends Node2D
 
-@onready var accept = $"accept"
-@onready var camera_2d = $"Camera2D"
+@onready var game_window: Node2D = $game_window
+@onready var background_click_area: CollisionPolygon2D = $game_window/Sprite2D/click_area/CollisionPolygon2D
+@onready var background: Sprite2D = $game_window/Sprite2D
 
 var move_edge = false
 var move_p = Vector2i()
 var accept_sec = 0
 var menu_area = false
+var area_in = "null"
+var room_mode = true  # 為之後的房間模式做準備
 
-#為之後的房間模式做準備
-var room_mode = true
-
-# 當開始時執行
 func _ready():
-	var screen_id = DisplayServer.window_get_current_screen()  # 取得目前視窗所在的螢幕 ID
-	var screen_size = DisplayServer.screen_get_size(screen_id)  # 取得該螢幕解析度
-	var screen_position = DisplayServer.screen_get_position(screen_id)  # 取得該螢幕的起始座標
-	var window_size = get_window().size  # 取得視窗大小
-	# 計算該螢幕右下角的正確位置
-	var target_position = Vector2i(
-		screen_position.x + screen_size.x - window_size.x + 10,  # 螢幕起始座標 + 螢幕寬度 - 視窗寬度
-		screen_position.y + screen_size.y - window_size.y - 90   # 螢幕起始座標 + 螢幕高度 - 視窗高度
-	)
-	# 設定視窗位置
-	get_window().position = target_position
 	SignalManager.connect("room_mode", _on_room_mode)
-# 每幀執行
-func _process(_delta):
-	#使滑鼠碰撞框每幀都在滑鼠上
-	accept.position = Vector2i(get_global_mouse_position())
-	#if Input.is_action_pressed("accept"):
-		#accept_sec += 1
-	#else:
-		#accept_sec = 0
-	if not Input.is_action_pressed("accept") and move_edge:
-			move_edge = false
-	#if room_mode:
-		#tomato.size.x = 500
-		#tomato.size.y = 140
-		#tomato.position.x = 246
-		#tomato.position.y = 24
-# 有輸入時執行
-func _input(event):
-	# 如果按下左鍵並移動，且在移動區邊緣
-	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
-		#更改遊戲窗口至左鍵位置
-		get_window().position = DisplayServer.mouse_get_position() + move_p
-	# 如果只按下左鍵，且在移動區邊緣
-	# 此處缺點：平常按確定也會計算move_
-	elif Input.is_action_pressed("accept") and not move_edge:
-		move_p = get_window().position - DisplayServer.mouse_get_position()
+	SignalManager.connect("button_press", _on_button_press)
+	SignalManager.connect("exit_press", _on_exit_press)
+	var BG_click_polygon: PackedVector2Array = background_click_area.polygon.duplicate()
+	var screen_size = get_viewport_rect().size  # 取得螢幕大小
+	var window_size = Vector2(1000, 300)
+	# 將 game_window 的左上角對齊螢幕右下角
+	game_window.position = screen_size - window_size
 	
-# 如果到移動區的邊緣
+func _process(_delta):
+	if not Input.is_action_pressed("accept") and move_edge:
+		move_edge = false
+	var BG_click_polygon: PackedVector2Array = background_click_area.polygon.duplicate()
+	for i in range(BG_click_polygon.size()):
+		BG_click_polygon[i] = background_click_area.to_global(BG_click_polygon[i])
+	get_window().mouse_passthrough_polygon = BG_click_polygon
+	
+
+func _input(event):
+	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
+		game_window.position = Vector2(DisplayServer.mouse_get_position()) + move_p
+	elif Input.is_action_pressed("accept") and not move_edge:
+		move_p = game_window.position - Vector2(DisplayServer.mouse_get_position())
+
 func _on_move_mouse_exited():
 	move_edge = true
 
 func _on_room_mode():
 	room_mode = true
+
+func _on_click_area_mouse_entered() -> void:
+	area_in = "background"
+	
+func _on_button_press(node_name):
+	var node = game_window.get_node(node_name.replace("_button", ""))
+	node.visible = true
+
+func _on_exit_press(node_name):
+	var node = game_window.get_node(node_name.replace("_button", ""))
+	node.visible = false

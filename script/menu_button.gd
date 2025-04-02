@@ -22,3 +22,4 @@ func _on_room_mode():
 
 func _on_exit_pressed() -> void:
 	panel_container.visible = false
+	SignalManager.emit_signal("exit_press", self.name)
