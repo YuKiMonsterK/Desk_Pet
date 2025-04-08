@@ -1,19 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcbhdhcnbs164"]
+[gd_scene load_steps=12 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_vwfic"]
-[ext_resource type="PackedScene" path="res://scene/room.tscn" id="2_o6q0f"]
+[ext_resource type="PackedScene" uid="uid://6coa40dfor8i" path="res://scene/room.tscn" id="2_o6q0f"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="5_mnmej"]
 [ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="6_s5yxy"]
 [ext_resource type="PackedScene" path="res://scene/forward_timing.tscn" id="7_eik88"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="7_s5yxy"]
 [ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="9_3sxgj"]
+[ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="9_b5f6u"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("game_window/SubViewport")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
-radius = 28.4429
+radius = 41.9238
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(571, 235)
@@ -41,14 +42,6 @@ scale = Vector2(0.990982, 0.916943)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="game_window/Sprite2D/click_area"]
 polygon = PackedVector2Array(-510, -125, -510, 177, 486, 177, 489, -122)
 
-[node name="move" type="Area2D" parent="game_window"]
-position = Vector2(99, 23)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/move"]
-position = Vector2(28, -194)
-shape = SubResource("CircleShape2D_6kbn0")
-
 [node name="DropdownButton" parent="game_window" instance=ExtResource("6_o6q0f")]
 offset_left = -368.0
 offset_top = -235.0
@@ -57,6 +50,7 @@ offset_bottom = -202.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("5_mnmej")]
+visible = false
 offset_left = -241.0
 offset_top = -252.0
 offset_right = 18.0
@@ -101,6 +95,18 @@ icon = ExtResource("9_3sxgj")
 flat = true
 icon_alignment = 1
 
+[node name="CharacterBody2D" parent="game_window" instance=ExtResource("9_b5f6u")]
+position = Vector2(68, -117)
+
+[node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
+position = Vector2(33.654, 129.498)
+scale = Vector2(0.961538, 0.961538)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
+position = Vector2(-36.0402, -197.078)
+shape = SubResource("CircleShape2D_6kbn0")
+
 [connection signal="mouse_entered" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_exited"]
-[connection signal="mouse_exited" from="game_window/move" to="." method="_on_move_mouse_exited"]
+[connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
