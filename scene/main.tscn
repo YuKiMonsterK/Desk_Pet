@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcbhdhcnbs164"]
+[gd_scene load_steps=11 format=3 uid="uid://bcbhdhcnbs164"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_vwfic"]
 [ext_resource type="PackedScene" path="res://scene/room.tscn" id="2_o6q0f"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="5_mnmej"]
 [ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="6_s5yxy"]
-[ext_resource type="PackedScene" uid="uid://djtyhfbug5aga" path="res://scene/forward_timing.tscn" id="7_eik88"]
+[ext_resource type="PackedScene" path="res://scene/forward_timing.tscn" id="7_eik88"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="7_s5yxy"]
+[ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="9_3sxgj"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("game_window/SubViewport")
@@ -49,14 +50,13 @@ position = Vector2(28, -194)
 shape = SubResource("CircleShape2D_6kbn0")
 
 [node name="DropdownButton" parent="game_window" instance=ExtResource("6_o6q0f")]
-offset_left = 221.0
-offset_top = -223.0
-offset_right = 329.0
-offset_bottom = -190.0
+offset_left = -368.0
+offset_top = -235.0
+offset_right = -260.0
+offset_bottom = -202.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("5_mnmej")]
-visible = false
 offset_left = -241.0
 offset_top = -252.0
 offset_right = 18.0
@@ -93,10 +93,13 @@ offset_right = 250.0
 offset_bottom = -19.0
 
 [node name="forward timing_button" parent="game_window" instance=ExtResource("7_s5yxy")]
-offset_left = 13.0
-offset_top = -227.0
-offset_right = 72.0
-offset_bottom = -168.0
+offset_left = 5.0
+offset_top = -239.0
+offset_right = 63.0
+offset_bottom = -181.0
+icon = ExtResource("9_3sxgj")
+flat = true
+icon_alignment = 1
 
 [connection signal="mouse_entered" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_exited"]
