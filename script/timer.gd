@@ -107,7 +107,6 @@ func _on_timer_complete():
 	
 	if is_working:
 		
-		
 		label.text = "點擊開始來休息"
 		is_working = false
 		if current_session >= sessions_before_long_break:

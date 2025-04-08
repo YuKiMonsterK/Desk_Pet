@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3tgwo0eyqd31"]
 
 [ext_resource type="Script" uid="uid://dyqlxcytfpdcx" path="res://script/timer.gd" id="1_timer"]
-[ext_resource type="Theme" uid="uid://uoifmglsp8s5" path="res://assets/主題/tomato.tres" id="2_2ibnp"]
+[ext_resource type="Theme" uid="uid://cph4vle43ppcp" path="res://assets/主題/tomato.tres" id="2_2ibnp"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_4djcp"]
 
 [node name="Timer" type="Control"]
