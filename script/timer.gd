@@ -17,13 +17,14 @@ var current_session: int = 0  # 當前工作週期計數
 @onready var reset_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton
 @onready var settings_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton
 @onready var settings_panel = $SettingsPanel
-@onready var work_time_spin = $SettingsPanel/VBoxContainer/WorkTimeSpinBox
-@onready var break_time_spin = $SettingsPanel/VBoxContainer/BreakTimeSpinBox
-@onready var long_break_time_spin = $SettingsPanel/VBoxContainer/LongBreakTimeSpinBox
-@onready var sessions_spin = $SettingsPanel/VBoxContainer/SessionsSpinBox
-@onready var save_button = $SettingsPanel/VBoxContainer/SaveButton
+@onready var work_time_spin = $SettingsPanel/MarginContainer/VBoxContainer/WorkTimeSpinBox
+@onready var break_time_spin = $SettingsPanel/MarginContainer/VBoxContainer/BreakTimeSpinBox
+@onready var long_break_time_spin = $SettingsPanel/MarginContainer/VBoxContainer/LongBreakTimeSpinBox
+@onready var sessions_spin = $SettingsPanel/MarginContainer/VBoxContainer/SessionsSpinBox
+@onready var save_button = $SettingsPanel/MarginContainer/VBoxContainer/SaveButton
 @onready var panel_container: PanelContainer = $PanelContainer
 @onready var exit_button: Button = $exit_button
+@onready var label: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
 
 func _ready():
 	# 初始化時間為工作時間（分鐘轉換為秒）
@@ -38,6 +39,7 @@ func _ready():
 	sessions_spin.value = sessions_before_long_break
 	panel_container.visible = false
 	exit_button.visible = false
+	label.text = "番茄鐘"
 	
 func _on_timer_timeout():
 	current_time -= 1
@@ -50,31 +52,36 @@ func update_display():
 	# 將秒數轉換為分:秒格式
 	var minutes = current_time / 60
 	var seconds = current_time % 60
-	timer_label.text = "%02d:%02d" % [minutes, seconds]
+	timer_label.text = "%02d:%02d (%02d/%02d)" % [minutes, seconds , current_session, sessions_spin.value]
 
 func _on_start_button_pressed():
 	is_running = !is_running
 	start_button.text = "暫停" if is_running else "開始"
 	if is_running:
+		label.text = "已暫停"
 		timer_node.start()
 	else:
 		timer_node.stop()
+	if is_working:
+		label.text = "讀書中..."
+	else:
+		label.text = "休息中..."
+	if current_session == 0:
+		current_session = 1
 
 func _on_reset_button_pressed():
 	is_running = false
 	timer_node.stop()
 	start_button.text = "開始"
-	if is_working:
-		current_time = work_time * 60  # 重置為工作時間（分鐘轉換為秒）
-	else:
-		current_time = break_time * 60  # 重置為休息時間（分鐘轉換為秒）
+	label.text = "番茄鐘"
+	current_time = work_time * 60  # 重置為工作時間（分鐘轉換為秒）
+	current_session = 0
 	update_display()
 
 func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible
 	exit_button.visible = false
-	start_button.visible = false
-	settings_button.visible = false
+	panel_container.visible = false
 	
 func _on_save_button_pressed():
 	# 更新所有時間設定
@@ -83,8 +90,7 @@ func _on_save_button_pressed():
 	long_break_time = int(long_break_time_spin.value)
 	sessions_before_long_break = int(sessions_spin.value)
 	exit_button.visible = true
-	start_button.visible = true
-	settings_button.visible = true
+	panel_container.visible = true
 	# 更新當前時間（分鐘轉換為秒）
 	if is_working:
 		current_time = work_time * 60
@@ -100,7 +106,9 @@ func _on_timer_complete():
 	start_button.text = "開始"
 	
 	if is_working:
-		current_session += 1
+		
+		
+		label.text = "點擊開始來休息"
 		is_working = false
 		if current_session >= sessions_before_long_break:
 			current_time = long_break_time * 60  # 使用長休息時間（分鐘轉換為秒）
@@ -108,6 +116,8 @@ func _on_timer_complete():
 		else:
 			current_time = break_time * 60  # 使用休息時間（分鐘轉換為秒）
 	else:
+		current_session += 1
+		label.text = "讀書中..."
 		is_working = true
 		current_time = work_time * 60  # 使用工作時間（分鐘轉換為秒）
 	
