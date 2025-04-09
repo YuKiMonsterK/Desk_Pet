@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvg1r2yofo8de"]
+[gd_scene load_steps=14 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_vwfic"]
 [ext_resource type="PackedScene" uid="uid://6coa40dfor8i" path="res://scene/room.tscn" id="2_o6q0f"]
@@ -13,6 +13,14 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("game_window/SubViewport")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5f6u"]
+normal = Vector2(-0.999948, 0.0101675)
+distance = -404.16
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqoya"]
+normal = Vector2(1, 0)
+distance = -392.429
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
 radius = 41.9238
 
@@ -24,7 +32,7 @@ script = ExtResource("1_vwfic")
 position = Vector2(71, 174)
 
 [node name="SubViewport" type="SubViewport" parent="game_window"]
-size = Vector2i(997, 702)
+size = Vector2i(1122, 702)
 
 [node name="room" parent="game_window/SubViewport" instance=ExtResource("2_o6q0f")]
 
@@ -41,6 +49,51 @@ scale = Vector2(0.990982, 0.916943)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="game_window/Sprite2D/click_area"]
 polygon = PackedVector2Array(-510, -125, -510, 177, 486, 177, 489, -122)
+
+[node name="boundary" type="Area2D" parent="game_window/Sprite2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Right_boundary" type="CollisionShape2D" parent="game_window/Sprite2D/boundary"]
+shape = SubResource("WorldBoundaryShape2D_b5f6u")
+
+[node name="Left_boundary" type="CollisionShape2D" parent="game_window/Sprite2D/boundary"]
+shape = SubResource("WorldBoundaryShape2D_tqoya")
+
+[node name="menu_button" parent="game_window" instance=ExtResource("7_s5yxy")]
+offset_left = -492.0
+offset_top = -180.0
+offset_right = -435.0
+offset_bottom = -159.0
+metadata/_edit_use_anchors_ = true
+
+[node name="forward timing_button" parent="game_window" instance=ExtResource("7_s5yxy")]
+offset_left = 5.0
+offset_top = -239.0
+offset_right = 73.0
+offset_bottom = -171.0
+icon = ExtResource("9_3sxgj")
+flat = true
+icon_alignment = 1
+
+[node name="Timer_button" parent="game_window" instance=ExtResource("7_s5yxy")]
+offset_left = 197.0
+offset_top = -115.0
+offset_right = 249.0
+offset_bottom = -94.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterBody2D" parent="game_window" instance=ExtResource("9_b5f6u")]
+position = Vector2(252, -111)
+
+[node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
+position = Vector2(33.654, 129.498)
+scale = Vector2(0.961538, 0.961538)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
+position = Vector2(-36.0402, -197.078)
+shape = SubResource("CircleShape2D_6kbn0")
 
 [node name="DropdownButton" parent="game_window" instance=ExtResource("6_o6q0f")]
 offset_left = -368.0
@@ -65,20 +118,6 @@ offset_right = -157.0
 offset_bottom = -35.0
 metadata/_edit_use_anchors_ = true
 
-[node name="menu_button" parent="game_window" instance=ExtResource("7_s5yxy")]
-offset_left = -492.0
-offset_top = -180.0
-offset_right = -435.0
-offset_bottom = -159.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Timer_button" parent="game_window" instance=ExtResource("7_s5yxy")]
-offset_left = 197.0
-offset_top = -115.0
-offset_right = 249.0
-offset_bottom = -94.0
-metadata/_edit_use_anchors_ = true
-
 [node name="forward timing" parent="game_window" instance=ExtResource("7_eik88")]
 visible = false
 offset_left = 34.0
@@ -86,27 +125,10 @@ offset_top = -247.0
 offset_right = 250.0
 offset_bottom = -19.0
 
-[node name="forward timing_button" parent="game_window" instance=ExtResource("7_s5yxy")]
-offset_left = 5.0
-offset_top = -239.0
-offset_right = 63.0
-offset_bottom = -181.0
-icon = ExtResource("9_3sxgj")
-flat = true
-icon_alignment = 1
-
-[node name="CharacterBody2D" parent="game_window" instance=ExtResource("9_b5f6u")]
-position = Vector2(68, -117)
-
-[node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
-position = Vector2(33.654, 129.498)
-scale = Vector2(0.961538, 0.961538)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
-position = Vector2(-36.0402, -197.078)
-shape = SubResource("CircleShape2D_6kbn0")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="mouse_entered" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_exited"]
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
