@@ -40,11 +40,11 @@ func _process(_delta):
 
 func _input(event):
 	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
-		character_body_2d.position = Vector2(DisplayServer.mouse_get_position()) + move_p
+		character_body_2d.position.x = DisplayServer.mouse_get_position().x + move_p
 		collision_shape_2d.position = Vector2(-31.88,-217.878)
 		SignalManager.emit_signal("character_move")
 	elif Input.is_action_pressed("accept") and not move_edge:
-		move_p = character_body_2d.position - Vector2(DisplayServer.mouse_get_position())
+		move_p = character_body_2d.position.x - DisplayServer.mouse_get_position().x
 
 func _on_move_mouse_exited():
 	move_edge = true
