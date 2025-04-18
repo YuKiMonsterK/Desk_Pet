@@ -57,6 +57,7 @@ func update_display():
 func _on_start_button_pressed():
 	is_running = !is_running
 	start_button.text = "暫停" if is_running else "開始"
+	SignalManager.emit_signal("start_studing")
 	if is_running:
 		label.text = "已暫停"
 		timer_node.start()

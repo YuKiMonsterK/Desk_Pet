@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var right_ray: RayCast2D = $RightRay
 @onready var left_ray: RayCast2D = $LeftRay
+@onready var book: AnimatedSprite2D = $Book
 
 @export var state = "idle"
 
@@ -10,6 +11,7 @@ func _ready() -> void:
 	SignalManager.connect("character_move", _on_move)
 	SignalManager.connect("character_stop", _stop)
 	SignalManager.connect("character_walk", _walk)
+	SignalManager.connect("start_studing", _on_studing)
 	animated_sprite_2d.animation = "default"
 
 func _process(delta: float) -> void:
@@ -20,6 +22,8 @@ func _process(delta: float) -> void:
 		animated_sprite_2d.scale = Vector2(0.306,0.306)
 	elif  animated_sprite_2d.animation == "walk":
 		animated_sprite_2d.scale = Vector2(0.34,0.34)
+	elif  animated_sprite_2d.animation == "studing":
+		animated_sprite_2d.scale = Vector2(0.091,0.091)
 	if not animated_sprite_2d.is_playing():
 		animated_sprite_2d.play()
 	if left_ray.is_colliding():
@@ -41,3 +45,8 @@ func _walk(d):
 	else:
 		animated_sprite_2d.flip_h = false
 	animated_sprite_2d.animation = "walk"
+	
+func  _on_studing():
+	book.visible = true
+	animated_sprite_2d.animation = "studing"
+	
