@@ -26,7 +26,6 @@ func _ready():
 	SignalManager.connect("colliding", _on_colliding)
 	SignalManager.connect("start_studing", _on_study)
 	SignalManager.connect("to_study", _to_study)
-	SignalManager.connect("start_studing", _on_study)
 	var screen_size = get_viewport_rect().size
 	var window_size = Vector2(1000, 300)
 	# 將 game_window 的左上角對齊螢幕右下角
