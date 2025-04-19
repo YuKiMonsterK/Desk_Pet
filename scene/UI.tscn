@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvg1r2yofo8de"]
+
+[ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_lj1a1"]
+[ext_resource type="PackedScene" uid="uid://6coa40dfor8i" path="res://scene/room.tscn" id="2_rxvkj"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="3_gkllu"]
+[ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="4_82v5q"]
+[ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="5_87k4a"]
+[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_7gjmc"]
+[ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
+[ext_resource type="PackedScene" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
+viewport_path = NodePath("game_window/SubViewport")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5f6u"]
+normal = Vector2(-0.999948, 0.0101675)
+distance = -404.16
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqoya"]
+normal = Vector2(1, 0)
+distance = -392.429
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
+radius = 41.9238
+
+[node name="UI" type="Node2D"]
+position = Vector2(571, 235)
+script = ExtResource("1_lj1a1")
+
+[node name="game_window" type="Node2D" parent="."]
+position = Vector2(71, 174)
+
+[node name="SubViewport" type="SubViewport" parent="game_window"]
+size = Vector2i(1122, 702)
+
+[node name="room" parent="game_window/SubViewport" instance=ExtResource("2_rxvkj")]
+
+[node name="Sprite2D" type="Sprite2D" parent="game_window"]
+position = Vector2(-83, -147)
+scale = Vector2(1.0091, 1.09058)
+texture = SubResource("ViewportTexture_s5yxy")
+region_enabled = true
+region_rect = Rect2(2.75084, 231.053, 989.732, 276.715)
+
+[node name="click_area" type="Area2D" parent="game_window/Sprite2D"]
+position = Vector2(11.8918, -24.7575)
+scale = Vector2(0.990982, 0.916943)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="game_window/Sprite2D/click_area"]
+polygon = PackedVector2Array(-510, -125, -510, 177, 486, 177, 489, -122)
+
+[node name="boundary" type="Area2D" parent="game_window/Sprite2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Right_boundary" type="CollisionShape2D" parent="game_window/Sprite2D/boundary"]
+shape = SubResource("WorldBoundaryShape2D_b5f6u")
+
+[node name="Left_boundary" type="CollisionShape2D" parent="game_window/Sprite2D/boundary"]
+shape = SubResource("WorldBoundaryShape2D_tqoya")
+
+[node name="menu_button" parent="game_window" instance=ExtResource("3_gkllu")]
+offset_left = -492.0
+offset_top = -180.0
+offset_right = -435.0
+offset_bottom = -159.0
+metadata/_edit_use_anchors_ = true
+
+[node name="forward timing_button" parent="game_window" instance=ExtResource("3_gkllu")]
+offset_left = 5.0
+offset_top = -239.0
+offset_right = 73.0
+offset_bottom = -171.0
+icon = ExtResource("4_82v5q")
+flat = true
+icon_alignment = 1
+
+[node name="Timer_button" parent="game_window" instance=ExtResource("3_gkllu")]
+offset_left = 197.0
+offset_top = -115.0
+offset_right = 249.0
+offset_bottom = -94.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterBody2D" parent="game_window" instance=ExtResource("5_87k4a")]
+position = Vector2(252, -111)
+
+[node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
+position = Vector2(33.654, 129.498)
+scale = Vector2(0.961538, 0.961538)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
+position = Vector2(-36.0402, -197.078)
+shape = SubResource("CircleShape2D_6kbn0")
+
+[node name="DropdownButton" parent="game_window" instance=ExtResource("6_7gjmc")]
+offset_left = -368.0
+offset_top = -235.0
+offset_right = -260.0
+offset_bottom = -202.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" parent="game_window" instance=ExtResource("7_h5qp4")]
+offset_left = -366.0
+offset_top = -536.0
+offset_right = -107.0
+offset_bottom = -312.0
+metadata/_edit_use_anchors_ = true
+
+[node name="menu" parent="game_window" instance=ExtResource("8_eqhda")]
+visible = false
+offset_left = -413.0
+offset_top = -238.0
+offset_right = -157.0
+offset_bottom = -35.0
+metadata/_edit_use_anchors_ = true
+
+[node name="forward timing" parent="game_window" instance=ExtResource("9_3ycfw")]
+visible = false
+offset_left = 34.0
+offset_top = -247.0
+offset_right = 250.0
+offset_bottom = -19.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="mouse_entered" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

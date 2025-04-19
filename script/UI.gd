@@ -23,8 +23,6 @@ func _ready():
 	SignalManager.connect("exit_press", _on_exit_press)
 	SignalManager.connect("colliding", _on_colliding)
 	SignalManager.connect("start_studing", _on_studing)
-	#跟桌面穿透有關
-	var BG_click_polygon: PackedVector2Array = background_click_area.polygon.duplicate()
 	var screen_size = get_viewport_rect().size
 	var window_size = Vector2(1000, 300)
 	# 將 game_window 的左上角對齊螢幕右下角
@@ -42,12 +40,6 @@ func _process(_delta):
 		collision_shape_2d.position = Vector2(-36.04,-197.078)
 	if not Input.is_action_pressed("accept") and move_edge:
 		move_edge = false
-	#跟桌面穿透有關
-	var BG_click_polygon: PackedVector2Array = background_click_area.polygon.duplicate()
-	for i in range(BG_click_polygon.size()):
-		BG_click_polygon[i] = background_click_area.to_global(BG_click_polygon[i])
-	get_window().mouse_passthrough_polygon = BG_click_polygon
-	
 	if character_p != 0 and (int(character_body_2d.position.x) - int(character_p) > 20 
 	or int(character_body_2d.position.x) - int(character_p) < -20):
 		
