@@ -11,20 +11,21 @@ var is_working: bool = true  # 是否處於工作狀態
 var is_running: bool = false  # 計時器是否在運行
 var current_session: int = 0  # 當前工作週期計數
 
-@onready var timer_node = $TimerNode
-@onready var timer_label = $PanelContainer/MarginContainer/VBoxContainer/TimerLabel
-@onready var start_button = $PanelContainer/MarginContainer/VBoxContainer/StartButton
-@onready var reset_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton
-@onready var settings_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton
-@onready var settings_panel = $SettingsPanel
-@onready var work_time_spin = $SettingsPanel/MarginContainer/VBoxContainer/WorkTimeSpinBox
-@onready var break_time_spin = $SettingsPanel/MarginContainer/VBoxContainer/BreakTimeSpinBox
-@onready var long_break_time_spin = $SettingsPanel/MarginContainer/VBoxContainer/LongBreakTimeSpinBox
-@onready var sessions_spin = $SettingsPanel/MarginContainer/VBoxContainer/SessionsSpinBox
-@onready var save_button = $SettingsPanel/MarginContainer/VBoxContainer/SaveButton
-@onready var panel_container: PanelContainer = $PanelContainer
-@onready var exit_button: Button = $exit_button
-@onready var label: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
+@onready var timer_node = $tomato/TimerNode
+@onready var timer_label = $tomato/PanelContainer/MarginContainer/VBoxContainer/TimerLabel
+@onready var start_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/StartButton
+@onready var reset_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton
+@onready var settings_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton
+@onready var settings_panel = $tomato/SettingsPanel
+@onready var work_time_spin = $tomato/SettingsPanel/MarginContainer/VBoxContainer/WorkTimeSpinBox
+@onready var break_time_spin = $tomato/SettingsPanel/MarginContainer/VBoxContainer/BreakTimeSpinBox
+@onready var long_break_time_spin = $tomato/SettingsPanel/MarginContainer/VBoxContainer/LongBreakTimeSpinBox
+@onready var sessions_spin = $tomato/SettingsPanel/MarginContainer/VBoxContainer/SessionsSpinBox
+@onready var save_button = $tomato/SettingsPanel/MarginContainer/VBoxContainer/SaveButton
+@onready var panel_container: PanelContainer = $tomato/PanelContainer
+@onready var exit_button: Button = $tomato/exit_button
+@onready var label: Label = $tomato/PanelContainer/MarginContainer/VBoxContainer/Label
+@onready var move_area: Control = $"move_area"
 
 func _ready():
 	# 初始化時間為工作時間（分鐘轉換為秒）
@@ -44,7 +45,6 @@ func _ready():
 func _on_timer_timeout():
 	current_time -= 1
 	update_display()
-	
 	if current_time <= 0:
 		_on_timer_complete()
 
@@ -57,7 +57,6 @@ func update_display():
 func _on_start_button_pressed():
 	is_running = !is_running
 	start_button.text = "暫停" if is_running else "開始"
-	SignalManager.emit_signal("start_studing")
 	if is_running:
 		label.text = "已暫停"
 		timer_node.start()
@@ -69,6 +68,8 @@ func _on_start_button_pressed():
 		label.text = "休息中..."
 	if current_session == 0:
 		current_session = 1
+	if start_button.text == "暫停":
+		SignalManager.emit_signal("to_study")
 
 func _on_reset_button_pressed():
 	is_running = false
@@ -97,7 +98,6 @@ func _on_save_button_pressed():
 		current_time = work_time * 60
 	else:
 		current_time = break_time * 60
-	
 	update_display()
 	settings_panel.visible = false
 
@@ -105,9 +105,7 @@ func _on_timer_complete():
 	is_running = false
 	timer_node.stop()
 	start_button.text = "開始"
-	
 	if is_working:
-		
 		label.text = "點擊開始來休息"
 		is_working = false
 		if current_session >= sessions_before_long_break:
@@ -120,7 +118,6 @@ func _on_timer_complete():
 		label.text = "讀書中..."
 		is_working = true
 		current_time = work_time * 60  # 使用工作時間（分鐘轉換為秒）
-	
 	update_display() 
 
 func _on_exit_button_pressed() -> void:
@@ -133,3 +130,6 @@ func _on_button_press(node_name):
 	if node_name == self.name + "_button":
 		panel_container.visible = true
 		exit_button.visible = true
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

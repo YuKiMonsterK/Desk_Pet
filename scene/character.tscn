@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xrbo3ag2wnmw" path="res://assets/move.png" id="3_d7vt2"]
 [ext_resource type="Texture2D" uid="uid://dt56n8b7kusa8" path="res://assets/walk.png" id="4_6k5wm"]
 [ext_resource type="Texture2D" uid="uid://gtf82csp8xbl" path="res://assets/read.png" id="4_p3t0x"]
-[ext_resource type="Texture2D" uid="uid://cguswhk61qlxb" path="res://assets/combined.png" id="6_mbevu"]
+[ext_resource type="Texture2D" uid="uid://ce8k8far4lrqa" path="res://assets/combined.png" id="6_mbevu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7vt2"]
 atlas = ExtResource("2_k8rrn")
@@ -453,7 +453,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_52oc2")
 }],
 "loop": true,
-"name": &"move",
+"name": &"drag",
 "speed": 15.0
 }, {
 "frames": [{
@@ -662,7 +662,7 @@ region = Rect2(7440, 0, 2480, 2365)
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bckg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 30.0,
 "texture": SubResource("AtlasTexture_fmxw4")
 }, {
 "duration": 1.0,
@@ -707,9 +707,10 @@ animations = [{
 script = ExtResource("1_k8rrn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.091, 0.091)
+scale = Vector2(0.101, 0.101)
 sprite_frames = SubResource("SpriteFrames_j6hc6")
-animation = &"studing"
+animation = &"drag"
+frame_progress = 0.11149
 
 [node name="RightRay" type="RayCast2D" parent="."]
 target_position = Vector2(69, -1)
@@ -724,8 +725,7 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="Book" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-9, 23)
-scale = Vector2(0.0493031, 0.0432611)
+position = Vector2(-1.18502, 7.64453)
+scale = Vector2(0.0285707, 0.0250694)
 sprite_frames = SubResource("SpriteFrames_4bckg")
-frame_progress = 0.769755
+frame_progress = 0.320535
