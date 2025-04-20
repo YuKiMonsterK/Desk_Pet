@@ -98,7 +98,6 @@ func _on_timer_timeout():
 		loop_cur = 0
 		timer.stop()
 
-
 func _on_exit_button():
 	timer.stop()
 	SignalManager.emit_signal("exit_press", self.name)
