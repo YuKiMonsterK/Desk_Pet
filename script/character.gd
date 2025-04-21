@@ -5,13 +5,13 @@ extends CharacterBody2D
 @onready var left_ray: RayCast2D = $LeftRay
 @onready var book: AnimatedSprite2D = $Book
 
-@export var state = "idle"
-
 func _ready() -> void:
 	SignalManager.connect("character_drag", _on_drag)
 	SignalManager.connect("character_stop", _stop)
 	SignalManager.connect("character_walk", _walk)
 	SignalManager.connect("start_studing", _on_studing)
+	SignalManager.connect("stop_study", _stop_study)
+	SignalManager.connect("end_study", _end_study)
 	animated_sprite_2d.animation = "default"
 	book.visible = false
 	
@@ -34,12 +34,10 @@ func _process(delta: float) -> void:
 		
 func _on_drag():
 	animated_sprite_2d.animation = "drag"
-	state = "drag"
 		
 func _stop():
 	if not book.visible:
 		animated_sprite_2d.animation = "default"
-		state = "idle"
 	
 func _walk(d):
 	if d == 1:
@@ -54,3 +52,10 @@ func  _on_studing():
 	animated_sprite_2d.animation = "studing"
 	book.play()
 	
+func  _stop_study():
+	book.stop()
+	book.frame = 1
+	
+func  _end_study():
+	book.visible = false
+	animated_sprite_2d.animation == "default"

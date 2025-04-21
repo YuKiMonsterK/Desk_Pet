@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://djtyhfbug5aga"]
+[gd_scene load_steps=4 format=3 uid="uid://dq35a1lg6jvk8"]
 
 [ext_resource type="Script" uid="uid://d2vhxfiag4n44" path="res://script/forward_timing.gd" id="1_0vecy"]
 [ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="2_0vecy"]

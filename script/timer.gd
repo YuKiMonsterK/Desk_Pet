@@ -70,6 +70,8 @@ func _on_start_button_pressed():
 		current_session = 1
 	if start_button.text == "暫停":
 		SignalManager.emit_signal("to_study")
+	elif start_button.text == "開始":
+		SignalManager.emit_signal("stop_study")
 
 func _on_reset_button_pressed():
 	is_running = false
@@ -79,6 +81,7 @@ func _on_reset_button_pressed():
 	current_time = work_time * 60  # 重置為工作時間（分鐘轉換為秒）
 	current_session = 0
 	update_display()
+	SignalManager.emit_signal("end_study")
 
 func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible
