@@ -17,8 +17,6 @@ func _ready():
 	main_button.text = button_text  # 設定按鈕文本
 	update_options()  # 更新選項列表
 	
-	# 連接主按鈕訊號
-	#main_button.pressed.connect(_on_main_button_pressed)
 
 # 更新選項列表函式
 func update_options():
