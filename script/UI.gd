@@ -5,6 +5,7 @@ extends Node2D
 @onready var character_body_2d: CharacterBody2D = $game_window/CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $game_window/CharacterBody2D/move/CollisionShape2D
 @onready var timer: Timer = $Timer
+@onready var switch_room: Sprite2D = $game_window/SwitchRoom
 
 var move_edge = false #當滑鼠在拖移區的邊緣
 var move_p = Vector2i()
@@ -16,7 +17,7 @@ var character_p = 0
 var direction = 0
 var study = false
 var stop = false
-var in_move = false
+var in_move_area = false
 func _ready():
 	#初始化
 	collision_shape_2d.position = Vector2(-36.04,-197.078)
@@ -33,7 +34,7 @@ func _ready():
 	# 將 game_window 的左上角對齊螢幕右下角
 	game_window.position = screen_size - window_size
 	timer.wait_time = randf_range(5,15)
-	
+	switch_room.visible = false
 func _process(_delta):
 	
 	#當沒移動且沒開計時且沒有目標位置
@@ -57,7 +58,7 @@ func _process(_delta):
 			direction = -1
 		else:
 			direction = 1
-		character_body_2d.velocity.x = direction * 100
+		character_body_2d.velocity.x = direction * 200
 		SignalManager.emit_signal("character_walk",direction)
 		character_body_2d.move_and_slide()
 	#如果相距小於20就判斷完成移動
@@ -66,30 +67,45 @@ func _process(_delta):
 		SignalManager.emit_signal("character_stop")
 		if study:
 			SignalManager.emit_signal("start_studing")
-		
+	
+	if character_body_2d.position.y < -114 and not move_edge:
+		character_body_2d.velocity.y = 100
+		character_body_2d.move_and_slide()
+	elif character_body_2d.position.y == -114:
+		character_body_2d.velocity.y = 0
+	#模式切換提示
+	if character_body_2d.position.y < -152:
+		switch_room.self_modulate = Color8(255,255,255,-1*character_body_2d.position.y)
+		switch_room.visible = true
+	elif room_mode:
+		switch_room.visible = false
+	
 func _input(event):
 	#正在拖移
 	if Input.is_action_pressed("accept") and move_edge and event is InputEventMouseMotion:
-		character_body_2d.position.x = DisplayServer.mouse_get_position().x + move_p
+		character_body_2d.position = Vector2i(DisplayServer.mouse_get_position()) + move_p
 		collision_shape_2d.position = Vector2(-31.88,-217.878)
 		SignalManager.emit_signal("character_drag")
+		if character_body_2d.position.y > -114:
+			character_body_2d.position.y = -114
 		moving = true
 		timer.stop()
 	elif Input.is_action_pressed("accept") and not move_edge and event is InputEventMouseMotion:
 		#沒在拖移，但正進行可能的活動（按下左鍵並拖移）
-		move_p = character_body_2d.position.x - DisplayServer.mouse_get_position().x
+		move_p = Vector2i(character_body_2d.position) - DisplayServer.mouse_get_position()
 	#正在摸頭，缺點是拖移時會有一段摸頭的時期
-	if Input.is_action_pressed("accept") and in_move and event is InputEventMouseMotion and not move_edge:
+	if Input.is_action_pressed("accept") and in_move_area and event is InputEventMouseMotion and not move_edge:
 		SignalManager.emit_signal("character_caress","y")
 		timer.stop()
-	elif in_move:
+	elif in_move_area:
 		SignalManager.emit_signal("character_caress","n")
+		
 func _on_move_mouse_entered() -> void:
-	in_move = true
+	in_move_area = true
 	
 func _on_move_mouse_exited():
 	move_edge = true
-	in_move = false
+	in_move_area = false
 	
 func _on_room_mode():
 	room_mode = true

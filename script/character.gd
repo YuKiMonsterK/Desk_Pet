@@ -53,7 +53,7 @@ func _walk(d):
 func _caress(mode):
 	if mode == "y":
 		animated_sprite_2d.animation = "caress"
-	elif not animated_sprite_2d.animation == "walk":
+	elif not animated_sprite_2d.animation == "drag":
 		animated_sprite_2d.animation = "default"
 func  _on_studing():
 	book.visible = true

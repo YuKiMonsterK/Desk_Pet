@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvg1r2yofo8de"]
+[gd_scene load_steps=17 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_lj1a1"]
 [ext_resource type="PackedScene" uid="uid://benlml0kbla65" path="res://scene/room_front.tscn" id="2_gkllu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
+[ext_resource type="Texture2D" uid="uid://bllhy3b2t7md3" path="res://assets/switch_room.png" id="11_gkllu"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("game_window/room_base")
@@ -137,6 +138,18 @@ offset_left = 2.0
 offset_top = -514.0
 offset_right = 218.0
 offset_bottom = -286.0
+
+[node name="Sprite2D" type="Sprite2D" parent="game_window"]
+
+[node name="SwitchRoom" type="Sprite2D" parent="game_window"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.654902)
+z_index = 2
+position = Vector2(-83, -138)
+scale = Vector2(0.292196, 0.292196)
+texture = ExtResource("11_gkllu")
+region_enabled = true
+region_rect = Rect2(279.3, 149.484, 3263.67, 963.225)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
