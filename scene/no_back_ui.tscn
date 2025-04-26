@@ -23,27 +23,19 @@ wait_time = 10.0
 position = Vector2(-608, -184)
 
 [node name="menu_button" parent="game_window" instance=ExtResource("2_8o7hl")]
-offset_left = 85.0
-offset_top = 177.0
-offset_right = 142.0
-offset_bottom = 198.0
+offset_left = 168.0
+offset_top = 176.0
+offset_right = 225.0
+offset_bottom = 197.0
 
 [node name="forward timing_button" parent="game_window" instance=ExtResource("2_8o7hl")]
-offset_left = 181.0
-offset_top = 100.0
-offset_right = 249.0
-offset_bottom = 168.0
+offset_left = 168.0
+offset_top = 88.0
+offset_right = 236.0
+offset_bottom = 156.0
 icon = ExtResource("3_78ck8")
 flat = true
 icon_alignment = 1
-
-[node name="Timer_button" parent="game_window" instance=ExtResource("2_8o7hl")]
-offset_left = 380.0
-offset_top = 236.0
-offset_right = 432.0
-offset_bottom = 257.0
-flat = true
-metadata/_edit_use_anchors_ = true
 
 [node name="CharacterBody2D" parent="game_window" instance=ExtResource("4_pv6fs")]
 position = Vector2(337, 199)
@@ -57,17 +49,24 @@ collision_layer = 2
 position = Vector2(-36.0402, -197.078)
 shape = SubResource("CircleShape2D_4oing")
 
+[node name="Timer_button" parent="game_window" instance=ExtResource("2_8o7hl")]
+offset_left = 171.0
+offset_top = 247.0
+offset_right = 223.0
+offset_bottom = 268.0
+metadata/_edit_use_anchors_ = true
+
 [node name="DropdownButton" parent="game_window" instance=ExtResource("5_mgtte")]
-offset_left = 440.0
-offset_top = 337.0
-offset_right = 548.0
-offset_bottom = 370.0
+offset_left = 179.0
+offset_top = 287.0
+offset_right = 287.0
+offset_bottom = 320.0
 
 [node name="Timer" parent="game_window" instance=ExtResource("6_x4u32")]
-offset_left = 442.0
-offset_top = 36.0
-offset_right = 701.0
-offset_bottom = 260.0
+offset_left = 200.0
+offset_top = -152.0
+offset_right = 459.0
+offset_bottom = 72.0
 
 [node name="menu" parent="game_window" instance=ExtResource("7_0wwhy")]
 visible = false
@@ -78,10 +77,10 @@ offset_bottom = 499.0
 metadata/_edit_use_anchors_ = true
 
 [node name="forward timing" parent="game_window" instance=ExtResource("8_dxpqv")]
-offset_left = 810.0
-offset_top = 58.0
-offset_right = 1026.0
-offset_bottom = 286.0
+offset_left = 224.0
+offset_top = -152.0
+offset_right = 440.0
+offset_bottom = 76.0
 
 [connection signal="mouse_entered" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
