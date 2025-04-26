@@ -1,11 +1,20 @@
-[gd_scene load_steps=104 format=3 uid="uid://ccmdrss8ufyo1"]
+[gd_scene load_steps=107 format=3 uid="uid://ccmdrss8ufyo1"]
 
 [ext_resource type="Script" uid="uid://bhpxjis5i533r" path="res://script/character.gd" id="1_k8rrn"]
 [ext_resource type="Texture2D" uid="uid://dmswod0jnlxpd" path="res://assets/idle.png" id="2_k8rrn"]
+[ext_resource type="Texture2D" uid="uid://bpnvgh4k6k80e" path="res://assets/測試的圖片資源/fHero_.png" id="2_mbevu"]
 [ext_resource type="Texture2D" uid="uid://xrbo3ag2wnmw" path="res://assets/move.png" id="3_d7vt2"]
 [ext_resource type="Texture2D" uid="uid://dt56n8b7kusa8" path="res://assets/walk.png" id="4_6k5wm"]
 [ext_resource type="Texture2D" uid="uid://gtf82csp8xbl" path="res://assets/read.png" id="4_p3t0x"]
 [ext_resource type="Texture2D" uid="uid://ce8k8far4lrqa" path="res://assets/combined.png" id="6_mbevu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bckg"]
+atlas = ExtResource("2_mbevu")
+region = Rect2(24, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xavmh"]
+atlas = ExtResource("2_mbevu")
+region = Rect2(48, 96, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7vt2"]
 atlas = ExtResource("2_k8rrn")
@@ -341,6 +350,17 @@ region = Rect2(5120, 4320, 1280, 720)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j6hc6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bckg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xavmh")
+}],
+"loop": true,
+"name": &"caress",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_d7vt2")
@@ -709,7 +729,7 @@ script = ExtResource("1_k8rrn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.101, 0.101)
 sprite_frames = SubResource("SpriteFrames_j6hc6")
-animation = &"studing"
+animation = &"caress"
 
 [node name="RightRay" type="RayCast2D" parent="."]
 target_position = Vector2(69, -1)

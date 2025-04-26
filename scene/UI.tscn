@@ -141,5 +141,6 @@ offset_bottom = -286.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 
+[connection signal="mouse_entered" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

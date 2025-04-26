@@ -16,7 +16,7 @@ var character_p = 0
 var direction = 0
 var study = false
 var stop = false
-
+var in_move = false
 func _ready():
 	#初始化
 	collision_shape_2d.position = Vector2(-36.04,-197.078)
@@ -78,9 +78,18 @@ func _input(event):
 	elif Input.is_action_pressed("accept") and not move_edge and event is InputEventMouseMotion:
 		#沒在拖移，但正進行可能的活動（按下左鍵並拖移）
 		move_p = character_body_2d.position.x - DisplayServer.mouse_get_position().x
-
+	#正在摸頭，缺點是拖移時會有一段摸頭的時期
+	if Input.is_action_pressed("accept") and in_move and event is InputEventMouseMotion and not move_edge:
+		SignalManager.emit_signal("character_caress","y")
+		timer.stop()
+	elif in_move:
+		SignalManager.emit_signal("character_caress","n")
+func _on_move_mouse_entered() -> void:
+	in_move = true
+	
 func _on_move_mouse_exited():
 	move_edge = true
+	in_move = false
 	
 func _on_room_mode():
 	room_mode = true
@@ -108,7 +117,6 @@ func _on_timer_timeout() -> void:
 
 func _to_study():
 	character_p = 157
-	#moving = true
 	study = true
 	print("f")
 	
