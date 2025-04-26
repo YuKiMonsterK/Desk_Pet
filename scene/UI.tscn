@@ -80,7 +80,6 @@ offset_left = -91.0
 offset_top = -162.0
 offset_right = -34.0
 offset_bottom = -141.0
-metadata/_edit_use_anchors_ = true
 
 [node name="forward timing_button" parent="game_window" instance=ExtResource("3_gkllu")]
 offset_left = 5.0
@@ -116,14 +115,12 @@ offset_left = -368.0
 offset_top = -235.0
 offset_right = -260.0
 offset_bottom = -202.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("7_h5qp4")]
 offset_left = -366.0
 offset_top = -536.0
 offset_right = -107.0
 offset_bottom = -312.0
-metadata/_edit_use_anchors_ = true
 
 [node name="menu" parent="game_window" instance=ExtResource("8_eqhda")]
 visible = false
