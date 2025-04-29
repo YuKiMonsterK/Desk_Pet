@@ -5,7 +5,7 @@ extends Node2D
 @onready var character_body_2d: CharacterBody2D = $game_window/CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $game_window/CharacterBody2D/move/CollisionShape2D
 @onready var timer: Timer = $Timer
-@onready var level_system: Node2D = $"."
+@onready var level_system: Node2D = $LevelSystem
 
 
 var move_edge = false #當滑鼠在拖移區的邊緣
@@ -35,7 +35,6 @@ func _ready():
 	# 將 game_window 的左上角對齊螢幕右下角
 	game_window.position = screen_size - window_size
 	timer.wait_time = randf_range(5,15)
-	var level_system = $LevelSystem
 	level_system.start_tracking()
 	
 func _process(_delta):
