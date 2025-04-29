@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	if animated_sprite_2d.animation == "default":
 		animated_sprite_2d.scale = Vector2(0.511,0.511)
 	elif animated_sprite_2d.animation == "drag":
-		animated_sprite_2d.scale = Vector2(0.306,0.306)
+		animated_sprite_2d.scale = Vector2(0.256,0.256)
 	elif  animated_sprite_2d.animation == "walk":
 		animated_sprite_2d.scale = Vector2(0.34,0.34)
 	elif  animated_sprite_2d.animation == "studing":

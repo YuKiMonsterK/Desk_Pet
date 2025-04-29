@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvg1r2yofo8de"]
+[gd_scene load_steps=18 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_lj1a1"]
 [ext_resource type="PackedScene" uid="uid://benlml0kbla65" path="res://scene/room_front.tscn" id="2_gkllu"]
 [ext_resource type="PackedScene" uid="uid://6coa40dfor8i" path="res://scene/room.tscn" id="2_rxvkj"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="3_gkllu"]
 [ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="4_82v5q"]
+[ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="5_82v5q"]
 [ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="5_87k4a"]
 [ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_7gjmc"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
@@ -86,6 +87,7 @@ offset_left = 5.0
 offset_top = -239.0
 offset_right = 73.0
 offset_bottom = -171.0
+theme = ExtResource("5_82v5q")
 icon = ExtResource("4_82v5q")
 flat = true
 icon_alignment = 1

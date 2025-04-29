@@ -124,6 +124,7 @@ func _on_timer_complete():
 	update_display() 
 
 func _on_exit_button_pressed() -> void:
+	print("fu")
 	panel_container.visible = false
 	settings_panel.visible = false
 	exit_button.visible = false
