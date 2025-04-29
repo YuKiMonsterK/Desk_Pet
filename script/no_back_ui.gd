@@ -9,7 +9,6 @@ var move_edge = false #當滑鼠在拖移區的邊緣
 var move_p = Vector2i()
 var accept_sec = 0
 var menu_area = false
-var room_mode = true  # 為之後的房間模式做準備
 var moving = false
 var character_p = 0
 var direction = 0
@@ -27,11 +26,9 @@ func _ready():
 	SignalManager.connect("start_studing", _on_study)
 	SignalManager.connect("end_study", _end_study)
 	SignalManager.connect("start_studing", _on_studing)
-	SignalManager.connect("room_mode", _room_switch)
 	var screen_size = get_viewport_rect().size
 	timer.wait_time = randf_range(5,15)
 	game_window.position = p
-	print(game_window.position)
 func _process(_delta):
 	
 	#當沒移動且沒開計時且沒有目標位置
@@ -81,18 +78,17 @@ func _input(event):
 	if Input.is_action_pressed("accept") and in_move_area and event is InputEventMouseMotion and not move_edge:
 		SignalManager.emit_signal("character_caress","y")
 		timer.stop()
-	elif in_move_area:
+	elif not in_move_area:
 		SignalManager.emit_signal("character_caress","n")
 		
 func _on_move_mouse_entered() -> void:
 	in_move_area = true
+	move_edge = false
 	
 func _on_move_mouse_exited():
+	print("t")
 	move_edge = true
 	in_move_area = false
-	
-func _on_room_mode():
-	room_mode = true
 	
 func _on_button_press(node_name):
 	var node = game_window.get_node(node_name.replace("_button", ""))
@@ -126,5 +122,5 @@ func _on_studing():
 func _end_study():
 	stop = false
 	
-func _room_switch():
+func _on_room_mode():
 	pass

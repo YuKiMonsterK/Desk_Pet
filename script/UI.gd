@@ -70,11 +70,13 @@ func _process(_delta):
 		if study:
 			SignalManager.emit_signal("start_studing")
 	
-	if character_body_2d.position.y < -114 and not move_edge:
+	if character_body_2d.position.y < -115 and not move_edge:
 		character_body_2d.velocity.y = 200
+		character_p = 0
 		character_body_2d.move_and_slide()
-	elif character_body_2d.position.y == -114:
+	elif character_body_2d.position.y >= -114:
 		character_body_2d.velocity.y = 0
+		character_body_2d.position.y = -114
 	#模式切換提示
 	if character_body_2d.position.y < -152:
 		switch_room.self_modulate = Color8(255,255,255,-1*character_body_2d.position.y)
@@ -90,7 +92,6 @@ func _input(event):
 		character_body_2d.position = Vector2i(DisplayServer.mouse_get_position()) + move_p
 		collision_shape_2d.position = Vector2(-31.88,-217.878)
 		SignalManager.emit_signal("character_drag")
-		print(character_body_2d.position)
 		if character_body_2d.position.y > -114:
 			character_body_2d.position.y = -114
 		moving = true
@@ -148,7 +149,6 @@ func _end_study():
 	stop = false
 	
 func _room_mode():
-	print(character_body_2d.position)
 	var no_back = load("res://scene/no_back_ui.tscn").instantiate()
 	no_back.p = Vector2(character_body_2d.position.x,character_body_2d.position.y)
 	get_tree().root.add_child(no_back)  # 把新的場景加到畫面上
