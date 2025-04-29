@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvg1r2yofo8de"]
+[gd_scene load_steps=17 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_lj1a1"]
 [ext_resource type="PackedScene" uid="uid://benlml0kbla65" path="res://scene/room_front.tscn" id="2_gkllu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
+[ext_resource type="PackedScene" uid="uid://b045mtiqjowrr" path="res://scene/level_system.tscn" id="11_gkllu"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("game_window/room_base")
@@ -118,10 +119,10 @@ offset_bottom = -202.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("7_h5qp4")]
-offset_left = -366.0
-offset_top = -536.0
-offset_right = -107.0
-offset_bottom = -312.0
+offset_left = -383.0
+offset_top = -527.0
+offset_right = -124.0
+offset_bottom = -303.0
 metadata/_edit_use_anchors_ = true
 
 [node name="menu" parent="game_window" instance=ExtResource("8_eqhda")]
@@ -140,6 +141,9 @@ offset_bottom = -286.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="LevelSystem" parent="." instance=ExtResource("11_gkllu")]
+position = Vector2(265, -56)
 
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
