@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcbhdhcnbs164"]
+
+[ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_vwfic"]
+[ext_resource type="PackedScene" path="res://scene/room.tscn" id="2_o6q0f"]
+[ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="5_mnmej"]
+[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="6_s5yxy"]
+[ext_resource type="PackedScene" uid="uid://djtyhfbug5aga" path="res://scene/forward_timing.tscn" id="7_eik88"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="7_s5yxy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
+viewport_path = NodePath("game_window/SubViewport")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
+radius = 28.4429
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(571, 235)
+script = ExtResource("1_vwfic")
+
+[node name="game_window" type="Node2D" parent="."]
+position = Vector2(71, 174)
+
+[node name="SubViewport" type="SubViewport" parent="game_window"]
+size = Vector2i(997, 702)
+
+[node name="room" parent="game_window/SubViewport" instance=ExtResource("2_o6q0f")]
+
+[node name="Sprite2D" type="Sprite2D" parent="game_window"]
+position = Vector2(-83, -147)
+scale = Vector2(1.0091, 1.09058)
+texture = SubResource("ViewportTexture_s5yxy")
+region_enabled = true
+region_rect = Rect2(2.75084, 231.053, 989.732, 276.715)
+
+[node name="click_area" type="Area2D" parent="game_window/Sprite2D"]
+position = Vector2(11.8918, -24.7575)
+scale = Vector2(0.990982, 0.916943)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="game_window/Sprite2D/click_area"]
+polygon = PackedVector2Array(-510, -125, -510, 177, 486, 177, 489, -122)
+
+[node name="move" type="Area2D" parent="game_window"]
+position = Vector2(99, 23)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/move"]
+position = Vector2(28, -194)
+shape = SubResource("CircleShape2D_6kbn0")
+
+[node name="DropdownButton" parent="game_window" instance=ExtResource("6_o6q0f")]
+offset_left = 221.0
+offset_top = -223.0
+offset_right = 329.0
+offset_bottom = -190.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" parent="game_window" instance=ExtResource("5_mnmej")]
+visible = false
+offset_left = -146.0
+offset_top = -267.0
+offset_right = 113.0
+offset_bottom = -43.0
+metadata/_edit_use_anchors_ = true
+
+[node name="menu" parent="game_window" instance=ExtResource("6_s5yxy")]
+visible = false
+offset_left = -425.0
+offset_top = -223.0
+offset_right = -169.0
+offset_bottom = -20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="menu_button" parent="game_window" instance=ExtResource("7_s5yxy")]
+offset_left = -492.0
+offset_top = -180.0
+offset_right = -435.0
+offset_bottom = -159.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer_button" parent="game_window" instance=ExtResource("7_s5yxy")]
+offset_left = 197.0
+offset_top = -115.0
+offset_right = 249.0
+offset_bottom = -94.0
+metadata/_edit_use_anchors_ = true
+
+[node name="forward timing" parent="game_window" instance=ExtResource("7_eik88")]
+offset_left = -253.0
+offset_top = -248.0
+offset_right = -37.0
+offset_bottom = -20.0
+
+[node name="forward timing_button" parent="game_window" instance=ExtResource("7_s5yxy")]
+offset_left = 13.0
+offset_top = -227.0
+offset_right = 72.0
+offset_bottom = -168.0
+
+[connection signal="mouse_entered" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="game_window/Sprite2D/click_area" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="game_window/move" to="." method="_on_move_mouse_exited"]

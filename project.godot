@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Desk pet"
-run/main_scene="res://scene/Main.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+run/main_scene="uid://cvg1r2yofo8de"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 0)
 config/icon="res://icon.svg"
 
@@ -20,14 +20,21 @@ config/icon="res://icon.svg"
 
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 SignalManager="*res://script/signal_manager.gd"
+ApiManager="*res://script/ApiManager.cs"
+MouseDetection="*res://script/MouseDetection.cs"
 
 [display]
 
-window/size/viewport_width=1000
-window/size/viewport_height=300
+window/size/mode=3
+window/size/resizable=false
 window/size/borderless=true
+window/size/always_on_top=true
 window/size/transparent=true
 window/per_pixel_transparency/allowed=true
+
+[dotnet]
+
+project/assembly_name="Desk pet"
 
 [editor]
 
@@ -41,6 +48,12 @@ enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://add
 [gui]
 
 theme/custom="res://assets/主題/theme.tres"
+
+[importer_defaults]
+
+import_gif_to_sprite_frames={
+"frames_per_second": -445
+}
 
 [input]
 

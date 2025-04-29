@@ -1,85 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3tgwo0eyqd31"]
+[gd_scene load_steps=5 format=3 uid="uid://b3tgwo0eyqd31"]
 
-[ext_resource type="Script" path="res://script/timer.gd" id="1_timer"]
+[ext_resource type="Script" uid="uid://dyqlxcytfpdcx" path="res://script/timer.gd" id="1_timer"]
+[ext_resource type="Theme" uid="uid://cph4vle43ppcp" path="res://assets/主題/tomato.tres" id="2_2ibnp"]
+[ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_4djcp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4djcp"]
+radius = 17.0
+height = 40.0
 
 [node name="Timer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 290.0
-offset_top = 144.0
-offset_right = 290.0
-offset_bottom = 144.0
+offset_right = 253.0
+offset_bottom = 228.0
+size_flags_horizontal = 0
 script = ExtResource("1_timer")
 
-[node name="TimerNode" type="Timer" parent="."]
+[node name="tomato" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = -10.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "計時器"
+[node name="PanelContainer" type="PanelContainer" parent="tomato"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 250.0
+offset_bottom = 247.0
+theme = ExtResource("2_2ibnp")
+
+[node name="MarginContainer" type="MarginContainer" parent="tomato/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tomato/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "番茄鐘"
 horizontal_alignment = 1
 
-[node name="TimerLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_top = -87.0
-offset_right = 50.0
-offset_bottom = -42.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "25:00"
+[node name="TimerLabel" type="Label" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "25:00 (0/4)"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 1
-offset_left = 45.0
-offset_top = -39.0
-offset_right = 125.0
-offset_bottom = -8.0
+[node name="StartButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "開始"
 
-[node name="ResetButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -132.0
-offset_top = -37.0
-offset_right = -52.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ResetButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "重置"
 
-[node name="SettingsButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -133.0
-offset_top = -79.0
-offset_right = -53.0
-offset_bottom = -48.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="SettingsButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "設置"
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="TimerNode" type="Timer" parent="tomato"]
+
+[node name="SettingsPanel" type="Panel" parent="tomato"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -87,70 +75,100 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
+offset_left = 31.0
+offset_top = -59.0
+offset_right = 191.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+[node name="MarginContainer" type="MarginContainer" parent="tomato/SettingsPanel"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -21.0
+offset_right = 160.0
+offset_bottom = 306.0
 
-[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="tomato/SettingsPanel/MarginContainer"]
 layout_mode = 2
-text = "工作时间（分钟）"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "工作時間（分鐘）"
 horizontal_alignment = 1
 
-[node name="WorkTimeSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
+[node name="WorkTimeSpinBox" type="SpinBox" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 max_value = 60.0
 value = 25.0
 
-[node name="Label2" type="Label" parent="SettingsPanel/VBoxContainer"]
+[node name="Label2" type="Label" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "休息时间（分钟）"
+text = "休息時間（分鐘）"
 horizontal_alignment = 1
 
-[node name="BreakTimeSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
+[node name="BreakTimeSpinBox" type="SpinBox" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 max_value = 30.0
 value = 5.0
 
-[node name="Label3" type="Label" parent="SettingsPanel/VBoxContainer"]
+[node name="Label3" type="Label" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "长休息时间（分钟）"
+text = "長休息時間（分鐘）"
 horizontal_alignment = 1
 
-[node name="LongBreakTimeSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
+[node name="LongBreakTimeSpinBox" type="SpinBox" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 max_value = 60.0
 value = 15.0
 
-[node name="Label4" type="Label" parent="SettingsPanel/VBoxContainer"]
+[node name="Label4" type="Label" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "工作周期数"
+text = "工作週期數"
 horizontal_alignment = 1
 
-[node name="SessionsSpinBox" type="SpinBox" parent="SettingsPanel/VBoxContainer"]
+[node name="SessionsSpinBox" type="SpinBox" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 1.0
 max_value = 10.0
 value = 4.0
 
-[node name="SaveButton" type="Button" parent="SettingsPanel/VBoxContainer"]
+[node name="SaveButton" type="Button" parent="tomato/SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "保存"
+
+[node name="exit_button" type="Button" parent="tomato"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 50.0
+offset_right = 207.0
+offset_bottom = 88.0
+theme = ExtResource("3_4djcp")
+flat = true
+
+[node name="move_area" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 42.0
+
+[node name="Area2D" type="Area2D" parent="move_area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_area/Area2D"]
+position = Vector2(131, 19)
+shape = SubResource("CapsuleShape2D_4djcp")
+
+[connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="timeout" from="tomato/TimerNode" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="tomato/SettingsPanel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="tomato/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="area_entered" from="move_area/Area2D" to="." method="_on_area_2d_area_entered"]
