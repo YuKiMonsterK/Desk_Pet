@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjns03s5gjpd"]
+
+[ext_resource type="Script" path="res://script/UI.gd" id="1_vwfic"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_1sh84"]
+[ext_resource type="Texture2D" uid="uid://bdxr7k0flx0jb" path="res://assets/測試的圖片資源/螢幕擷取畫面 2025-02-26 154050.png" id="2_x7tsm"]
+[ext_resource type="PackedScene" uid="uid://dikectsbrqbj6" path="res://scene/tomato.tscn" id="5_loki5"]
+[ext_resource type="PackedScene" uid="uid://bgo3f5da1yvqu" path="res://scene/error.tscn" id="5_n1shk"]
+[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_o6q0f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbpf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kbn0"]
+radius = 28.4429
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vwfic")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2)
+scale = Vector2(0.675115, 0.675115)
+texture = ExtResource("2_x7tsm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 1)
+
+[node name="accept" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="accept"]
+shape = SubResource("CircleShape2D_gbpf6")
+
+[node name="move" type="Area2D" parent="."]
+position = Vector2(99, 23)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move"]
+position = Vector2(103, -57)
+shape = SubResource("CircleShape2D_6kbn0")
+
+[node name="test" parent="." instance=ExtResource("2_1sh84")]
+offset_left = -372.0
+offset_top = -16.0
+offset_right = -327.0
+offset_bottom = 29.0
+
+[node name="Tomato" parent="." instance=ExtResource("5_loki5")]
+offset_left = 244.0
+offset_top = 21.0
+offset_right = 295.0
+offset_bottom = 42.0
+
+[node name="Panel" parent="." instance=ExtResource("5_n1shk")]
+offset_left = -183.0
+offset_top = -84.0
+offset_right = 131.0
+offset_bottom = 116.0
+
+[node name="DropdownButton" parent="." instance=ExtResource("6_o6q0f")]
+offset_left = 370.0
+offset_top = 307.0
+offset_right = 370.0
+offset_bottom = 307.0
+
+[connection signal="mouse_exited" from="move" to="." method="_on_move_mouse_exited"]
