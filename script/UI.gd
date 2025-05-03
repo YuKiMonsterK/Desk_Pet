@@ -51,6 +51,7 @@ func _process(_delta):
 	#在邊緣但沒有按左鍵就關閉move_edge
 	if not Input.is_action_pressed("accept") and move_edge:
 		move_edge = false
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	
 	#如果有目標位置且相距大於20就向那裡移動
 	if character_p != 0 and (int(character_body_2d.position.x) - int(character_p) > 5 
@@ -95,6 +96,11 @@ func _input(event):
 		if character_body_2d.position.y > -114:
 			character_body_2d.position.y = -114
 		moving = true
+		
+		
+		#hhflrshfelsfh
+		Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+
 		timer.stop()
 	elif Input.is_action_pressed("accept") and not move_edge and event is InputEventMouseMotion:
 		#沒在拖移，但正進行可能的活動（按下左鍵並拖移）

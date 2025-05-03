@@ -7,13 +7,13 @@ var level = 1
 @onready var progress_label = $ProgressLabel
 @onready var progress_bar = $LabelProgress
 
-const SAVE_FILE = "user://level_save.cfg"
+const SAVE_FILE = "user://level_save.cfg" #export_presets.cfg
 const SAVE_SECTION = "level_data"
 
 func _ready():
-	timer.timeout.connect(_on_timer_timeout)
 	load_data()  # 加载存档数据
 	update_ui()
+	timer.start()
 
 func start_tracking():
 	timer.start()
@@ -24,6 +24,7 @@ func _on_timer_timeout():
 	update_ui()
 	save_data()  # 每次更新后保存数据
 	print("秒數：%s，等級：%s" % [total_seconds, level])  # 除錯輸出
+	timer.start()
 
 func get_level_from_seconds(total_seconds):
 	return floor(sqrt(total_seconds / 60)) + 1
@@ -41,6 +42,7 @@ func save_data():
 	config.set_value(SAVE_SECTION, "total_seconds", total_seconds)
 	config.set_value(SAVE_SECTION, "level", level)
 	config.save(SAVE_FILE)
+	print("save")
 
 func load_data():
 	var config = ConfigFile.new()
@@ -48,3 +50,5 @@ func load_data():
 	if err == OK:  # 如果成功加载存档
 		total_seconds = config.get_value(SAVE_SECTION, "total_seconds", 0)
 		level = config.get_value(SAVE_SECTION, "level", 1)
+	else:
+		print("error")
