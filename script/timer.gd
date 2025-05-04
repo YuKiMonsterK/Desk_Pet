@@ -25,7 +25,6 @@ var current_session: int = 0  # 當前工作週期計數
 @onready var panel_container: PanelContainer = $tomato/PanelContainer
 @onready var exit_button: Button = $tomato/exit_button
 @onready var label: Label = $tomato/PanelContainer/MarginContainer/VBoxContainer/Label
-@onready var move_area: Control = $"move_area"
 
 func _ready():
 	# 初始化時間為工作時間（分鐘轉換為秒）
@@ -124,6 +123,7 @@ func _on_timer_complete():
 	update_display() 
 
 func _on_exit_button_pressed() -> void:
+	print("fu")
 	panel_container.visible = false
 	settings_panel.visible = false
 	exit_button.visible = false

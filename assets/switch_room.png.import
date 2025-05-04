@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fig2qw4bamhu"
-path="res://.godot/imported/combined.png-854fc0c753736d024419e0ff16cbdf43.ctex"
+uid="uid://bllhy3b2t7md3"
+path="res://.godot/imported/switch_room.png-f99fa022505e1aea0cb385c4ae4b57c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combined.png"
-dest_files=["res://.godot/imported/combined.png-854fc0c753736d024419e0ff16cbdf43.ctex"]
+source_file="res://assets/switch_room.png"
+dest_files=["res://.godot/imported/switch_room.png-f99fa022505e1aea0cb385c4ae4b57c3.ctex"]
 
 [params]
 

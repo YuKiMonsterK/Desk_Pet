@@ -12,6 +12,7 @@ func _ready() -> void:
 	SignalManager.connect("start_studing", _on_studing)
 	SignalManager.connect("stop_study", _stop_study)
 	SignalManager.connect("end_study", _end_study)
+	SignalManager.connect("character_caress", _caress)
 	animated_sprite_2d.animation = "default"
 	book.visible = false
 	
@@ -20,11 +21,13 @@ func _process(delta: float) -> void:
 	if animated_sprite_2d.animation == "default":
 		animated_sprite_2d.scale = Vector2(0.511,0.511)
 	elif animated_sprite_2d.animation == "drag":
-		animated_sprite_2d.scale = Vector2(0.306,0.306)
+		animated_sprite_2d.scale = Vector2(0.256,0.256)
 	elif  animated_sprite_2d.animation == "walk":
 		animated_sprite_2d.scale = Vector2(0.34,0.34)
 	elif  animated_sprite_2d.animation == "studing":
 		animated_sprite_2d.scale = Vector2(0.101,0.101)
+	elif  animated_sprite_2d.animation == "caress":
+		animated_sprite_2d.scale = Vector2(0.9,0.9)
 	if not animated_sprite_2d.is_playing():
 		animated_sprite_2d.play()
 	if left_ray.is_colliding():
@@ -47,6 +50,11 @@ func _walk(d):
 	if not book.visible:
 		animated_sprite_2d.animation = "walk"
 	
+func _caress(mode):
+	if mode == "y" and animated_sprite_2d.animation != "drag":
+		animated_sprite_2d.animation = "caress"
+	elif mode == "n" and animated_sprite_2d.animation == "caress":
+		animated_sprite_2d.animation = "default"
 func  _on_studing():
 	book.visible = true
 	animated_sprite_2d.animation = "studing"

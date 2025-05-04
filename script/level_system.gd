@@ -7,15 +7,12 @@ var level = 1
 @onready var progress_label = $ProgressLabel
 @onready var progress_bar = $LabelProgress
 
-const SAVE_FILE = "user://level_save.cfg"
+const SAVE_FILE = "user://level_save.cfg" #export_presets.cfg
 const SAVE_SECTION = "level_data"
 
 func _ready():
-	timer.timeout.connect(_on_timer_timeout)
 	load_data()  # 加载存档数据
 	update_ui()
-
-func start_tracking():
 	timer.start()
 
 func _on_timer_timeout():
@@ -24,6 +21,7 @@ func _on_timer_timeout():
 	update_ui()
 	save_data()  # 每次更新后保存数据
 	print("秒數：%s，等級：%s" % [total_seconds, level])  # 除錯輸出
+	timer.start()
 
 func get_level_from_seconds(total_seconds):
 	return floor(sqrt(total_seconds / 60)) + 1

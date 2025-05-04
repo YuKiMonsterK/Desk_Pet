@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://deyybtl0t2i5o"]
+
+[ext_resource type="Script" uid="uid://cdids7kojwu61" path="res://script/no_back_ui.gd" id="1_spugf"]
+[ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_8o7hl"]
+[ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="3_78ck8"]
+[ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="4_pv6fs"]
+[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="5_mgtte"]
+[ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="6_x4u32"]
+[ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="7_0wwhy"]
+[ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="8_dxpqv"]
+[ext_resource type="PackedScene" uid="uid://b1uncn23uovlb" path="res://scene/level_system.tscn" id="9_8o7hl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4oing"]
+radius = 41.9238
+
+[node name="no_back_UI" type="Node2D"]
+position = Vector2(1112, 832)
+script = ExtResource("1_spugf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="game_window" type="Node2D" parent="."]
+position = Vector2(-608, -184)
+
+[node name="menu_button" parent="game_window" instance=ExtResource("2_8o7hl")]
+offset_left = 168.0
+offset_top = 176.0
+offset_right = 225.0
+offset_bottom = 197.0
+
+[node name="forward timing_button" parent="game_window" instance=ExtResource("2_8o7hl")]
+offset_left = 168.0
+offset_top = 88.0
+offset_right = 236.0
+offset_bottom = 156.0
+icon = ExtResource("3_78ck8")
+flat = true
+icon_alignment = 1
+
+[node name="CharacterBody2D" parent="game_window" instance=ExtResource("4_pv6fs")]
+position = Vector2(337, 199)
+
+[node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
+position = Vector2(33.654, 129.498)
+scale = Vector2(0.961538, 0.961538)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
+position = Vector2(-36.0402, -197.078)
+shape = SubResource("CircleShape2D_4oing")
+
+[node name="Timer_button" parent="game_window" instance=ExtResource("2_8o7hl")]
+offset_left = 171.0
+offset_top = 247.0
+offset_right = 223.0
+offset_bottom = 268.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DropdownButton" parent="game_window" instance=ExtResource("5_mgtte")]
+offset_left = 179.0
+offset_top = 287.0
+offset_right = 287.0
+offset_bottom = 320.0
+
+[node name="Timer" parent="game_window" instance=ExtResource("6_x4u32")]
+offset_left = 200.0
+offset_top = -152.0
+offset_right = 459.0
+offset_bottom = 72.0
+
+[node name="menu" parent="game_window" instance=ExtResource("7_0wwhy")]
+visible = false
+offset_left = 702.0
+offset_top = 296.0
+offset_right = 958.0
+offset_bottom = 499.0
+metadata/_edit_use_anchors_ = true
+
+[node name="forward timing" parent="game_window" instance=ExtResource("8_dxpqv")]
+offset_left = 216.0
+offset_top = -157.0
+offset_right = 432.0
+offset_bottom = 71.0
+
+[node name="LevelSystem" parent="." instance=ExtResource("9_8o7hl")]
+position = Vector2(-96, -56)
+
+[connection signal="mouse_entered" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_entered"]
+[connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]

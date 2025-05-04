@@ -1,31 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3tgwo0eyqd31"]
+[gd_scene load_steps=4 format=3 uid="uid://b3tgwo0eyqd31"]
 
 [ext_resource type="Script" uid="uid://dyqlxcytfpdcx" path="res://script/timer.gd" id="1_timer"]
 [ext_resource type="Theme" uid="uid://cph4vle43ppcp" path="res://assets/主題/tomato.tres" id="2_2ibnp"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_4djcp"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4djcp"]
-radius = 17.0
-height = 40.0
-
 [node name="Timer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 253.0
-offset_bottom = 228.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 248.0
+offset_bottom = 222.0
 size_flags_horizontal = 0
 script = ExtResource("1_timer")
 
 [node name="tomato" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 241.0
+offset_bottom = 222.445
 
 [node name="PanelContainer" type="PanelContainer" parent="tomato"]
+z_index = -1
 layout_mode = 0
-offset_top = -2.0
 offset_right = 250.0
-offset_bottom = 247.0
+offset_bottom = 246.0
 theme = ExtResource("2_2ibnp")
 
 [node name="MarginContainer" type="MarginContainer" parent="tomato/PanelContainer"]
@@ -145,6 +143,7 @@ theme_override_font_sizes/font_size = 16
 text = "保存"
 
 [node name="exit_button" type="Button" parent="tomato"]
+z_index = -1
 layout_mode = 0
 offset_left = 169.0
 offset_top = 50.0
@@ -153,22 +152,9 @@ offset_bottom = 88.0
 theme = ExtResource("3_4djcp")
 flat = true
 
-[node name="move_area" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 2.0
-offset_right = 40.0
-offset_bottom = 42.0
-
-[node name="Area2D" type="Area2D" parent="move_area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="move_area/Area2D"]
-position = Vector2(131, 19)
-shape = SubResource("CapsuleShape2D_4djcp")
-
 [connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="timeout" from="tomato/TimerNode" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="tomato/SettingsPanel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="tomato/exit_button" to="." method="_on_exit_button_pressed"]
-[connection signal="area_entered" from="move_area/Area2D" to="." method="_on_area_2d_area_entered"]
