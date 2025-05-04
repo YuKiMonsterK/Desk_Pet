@@ -15,9 +15,6 @@ func _ready():
 	update_ui()
 	timer.start()
 
-func start_tracking():
-	timer.start()
-
 func _on_timer_timeout():
 	total_seconds += 1
 	level = get_level_from_seconds(total_seconds)
@@ -42,7 +39,6 @@ func save_data():
 	config.set_value(SAVE_SECTION, "total_seconds", total_seconds)
 	config.set_value(SAVE_SECTION, "level", level)
 	config.save(SAVE_FILE)
-	print("save")
 
 func load_data():
 	var config = ConfigFile.new()
@@ -50,5 +46,3 @@ func load_data():
 	if err == OK:  # 如果成功加载存档
 		total_seconds = config.get_value(SAVE_SECTION, "total_seconds", 0)
 		level = config.get_value(SAVE_SECTION, "level", 1)
-	else:
-		print("error")

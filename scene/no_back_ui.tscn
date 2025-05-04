@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deyybtl0t2i5o"]
+[gd_scene load_steps=11 format=3 uid="uid://deyybtl0t2i5o"]
 
 [ext_resource type="Script" uid="uid://cdids7kojwu61" path="res://script/no_back_ui.gd" id="1_spugf"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_8o7hl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="6_x4u32"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="7_0wwhy"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="8_dxpqv"]
+[ext_resource type="PackedScene" uid="uid://b1uncn23uovlb" path="res://scene/level_system.tscn" id="9_8o7hl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4oing"]
 radius = 41.9238
@@ -43,7 +44,6 @@ position = Vector2(337, 199)
 [node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
 position = Vector2(33.654, 129.498)
 scale = Vector2(0.961538, 0.961538)
-collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
 position = Vector2(-36.0402, -197.078)
@@ -77,10 +77,13 @@ offset_bottom = 499.0
 metadata/_edit_use_anchors_ = true
 
 [node name="forward timing" parent="game_window" instance=ExtResource("8_dxpqv")]
-offset_left = 224.0
-offset_top = -152.0
-offset_right = 440.0
-offset_bottom = 76.0
+offset_left = 216.0
+offset_top = -157.0
+offset_right = 432.0
+offset_bottom = 71.0
+
+[node name="LevelSystem" parent="." instance=ExtResource("9_8o7hl")]
+position = Vector2(-96, -56)
 
 [connection signal="mouse_entered" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]

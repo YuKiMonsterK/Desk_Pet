@@ -98,7 +98,6 @@ func _input(event):
 		moving = true
 		
 		
-		#hhflrshfelsfh
 		Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 
 		timer.stop()

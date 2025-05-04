@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvg1r2yofo8de"]
+[gd_scene load_steps=20 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_lj1a1"]
 [ext_resource type="PackedScene" uid="uid://benlml0kbla65" path="res://scene/room_front.tscn" id="2_gkllu"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
+[ext_resource type="PackedScene" uid="uid://wn3c3q5t3x8q" path="res://scene/move_area.tscn" id="10_7gjmc"]
 [ext_resource type="Texture2D" uid="uid://bllhy3b2t7md3" path="res://assets/switch_room.png" id="11_gkllu"]
 [ext_resource type="PackedScene" uid="uid://b1uncn23uovlb" path="res://scene/level_system.tscn" id="13_87k4a"]
 
@@ -107,7 +108,6 @@ position = Vector2(157, -114)
 [node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
 position = Vector2(33.654, 129.498)
 scale = Vector2(0.961538, 0.961538)
-collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game_window/CharacterBody2D/move"]
 position = Vector2(-36.0402, -197.078)
@@ -120,10 +120,17 @@ offset_right = -260.0
 offset_bottom = -202.0
 
 [node name="Timer" parent="game_window" instance=ExtResource("7_h5qp4")]
-offset_left = -366.0
-offset_top = -536.0
-offset_right = -107.0
-offset_bottom = -312.0
+visible = false
+z_index = 1
+offset_left = -284.0
+offset_top = -226.0
+offset_right = -26.0
+offset_bottom = -3.0
+mouse_filter = 1
+
+[node name="move" parent="game_window/Timer" instance=ExtResource("10_7gjmc")]
+z_index = -1
+position = Vector2(130, -21)
 
 [node name="menu" parent="game_window" instance=ExtResource("8_eqhda")]
 visible = false
@@ -134,10 +141,14 @@ offset_bottom = -35.0
 metadata/_edit_use_anchors_ = true
 
 [node name="forward timing" parent="game_window" instance=ExtResource("9_3ycfw")]
-offset_left = 2.0
-offset_top = -514.0
-offset_right = 218.0
-offset_bottom = -286.0
+visible = false
+offset_left = -486.0
+offset_top = -230.0
+offset_right = -270.0
+offset_bottom = 11.0
+
+[node name="Area2D" parent="game_window/forward timing" instance=ExtResource("10_7gjmc")]
+position = Vector2(110, -19)
 
 [node name="Sprite2D" type="Sprite2D" parent="game_window"]
 
@@ -152,7 +163,7 @@ region_enabled = true
 region_rect = Rect2(279.3, 149.484, 3263.67, 963.225)
 
 [node name="LevelSystem" parent="game_window" instance=ExtResource("13_87k4a")]
-position = Vector2(-322, -92)
+position = Vector2(343, -225)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

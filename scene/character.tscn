@@ -635,18 +635,6 @@ animations = [{
 atlas = ExtResource("7_mbevu")
 region = Rect2(0, 0, 2480, 2365)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhp06"]
-atlas = ExtResource("7_mbevu")
-region = Rect2(2480, 0, 2480, 2365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y37fk"]
-atlas = ExtResource("7_mbevu")
-region = Rect2(4960, 0, 2480, 2365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_phakr"]
-atlas = ExtResource("7_mbevu")
-region = Rect2(7440, 0, 2480, 2365)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xn2ej"]
 atlas = ExtResource("7_mbevu")
 region = Rect2(9920, 0, 2480, 2365)
@@ -683,20 +671,23 @@ region = Rect2(9920, 2365, 2480, 2365)
 atlas = ExtResource("7_mbevu")
 region = Rect2(12400, 2365, 2480, 2365)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhp06"]
+atlas = ExtResource("7_mbevu")
+region = Rect2(2480, 0, 2480, 2365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y37fk"]
+atlas = ExtResource("7_mbevu")
+region = Rect2(4960, 0, 2480, 2365)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phakr"]
+atlas = ExtResource("7_mbevu")
+region = Rect2(7440, 0, 2480, 2365)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bckg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 30.0,
 "texture": SubResource("AtlasTexture_fmxw4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uhp06")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y37fk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phakr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xn2ej")
@@ -724,10 +715,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jx4oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhp06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y37fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phakr")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -739,19 +739,20 @@ sprite_frames = SubResource("SpriteFrames_j6hc6")
 animation = &"studing"
 
 [node name="RightRay" type="RayCast2D" parent="."]
-target_position = Vector2(69, -1)
+target_position = Vector2(69, 0)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="LeftRay" type="RayCast2D" parent="."]
-target_position = Vector2(-70, -1)
+target_position = Vector2(-70, 0)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="Book" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-0.366847, 2.62499)
-scale = Vector2(0.00714268, 0.0039112)
+position = Vector2(-2, 12)
+scale = Vector2(0.0277986, 0.015222)
 sprite_frames = SubResource("SpriteFrames_4bckg")
+frame_progress = 0.236603
