@@ -3,6 +3,7 @@ extends Node2D
 @onready var game_window: Node2D = $game_window
 @onready var character_body_2d: CharacterBody2D = $game_window/CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $game_window/CharacterBody2D/move/CollisionShape2D
+@onready var no_back_ui: Node2D = $"."
 
 var move_edge = false #當滑鼠在拖移區的邊緣
 var move_p = Vector2i()
@@ -22,7 +23,7 @@ func _ready():
 	SignalManager.connect("exit_press", _on_exit_press)
 	SignalManager.connect("colliding", _on_colliding)
 	SignalManager.connect("to_study", _to_study)
-	
+	SignalManager.connect("room_mode", _room_mode)
 	var screen_size = get_viewport_rect().size
 	game_window.position = p
 func _process(_delta):
@@ -81,3 +82,12 @@ func _on_colliding(d):
 
 func _to_study() -> void:
 	SignalManager.emit_signal("start_studing")
+
+func _on_back_to_home_pressed() -> void:
+	SignalManager.emit_signal("back_home")
+	
+func _room_mode():
+	var UI = load("res://scene/UI.tscn").instantiate()
+	get_tree().root.add_child(UI)  # 把新的場景加到畫面上
+	SignalManager.emit_signal("c_back") #角色回到房間的動畫
+	no_back_ui.queue_free()  # 把自己刪掉

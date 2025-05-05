@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://deyybtl0t2i5o"]
+[gd_scene load_steps=15 format=3 uid="uid://deyybtl0t2i5o"]
 
 [ext_resource type="Script" uid="uid://cdids7kojwu61" path="res://script/no_back_ui.gd" id="1_spugf"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_8o7hl"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://wn3c3q5t3x8q" path="res://scene/move_area.tscn" id="7_78ck8"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="8_dxpqv"]
 [ext_resource type="PackedScene" uid="uid://b1uncn23uovlb" path="res://scene/level_system.tscn" id="9_8o7hl"]
+[ext_resource type="Texture2D" uid="uid://gebrfthfrvdt" path="res://assets/測試的圖片資源/🚪门(120 x 120).png" id="13_x4u32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4oing"]
 radius = 41.9238
@@ -39,6 +40,7 @@ offset_bottom = 174.0
 icon = ExtResource("4_mgtte")
 flat = true
 icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CharacterBody2D" parent="game_window" instance=ExtResource("4_pv6fs")]
 position = Vector2(337, 199)
@@ -65,6 +67,7 @@ offset_left = 424.0
 offset_top = 126.0
 offset_right = 532.0
 offset_bottom = 159.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("6_x4u32")]
 visible = false
@@ -97,5 +100,14 @@ offset_bottom = 75.0
 [node name="Area2D" parent="game_window/forward timing" instance=ExtResource("7_78ck8")]
 position = Vector2(110, -23)
 
+[node name="Back_to_home" type="Button" parent="game_window"]
+offset_left = 432.0
+offset_top = 238.0
+offset_right = 500.0
+offset_bottom = 306.0
+icon = ExtResource("13_x4u32")
+flat = true
+
 [connection signal="mouse_entered" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
+[connection signal="pressed" from="game_window/Back_to_home" to="." method="_on_back_to_home_pressed"]

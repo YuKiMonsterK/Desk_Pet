@@ -30,14 +30,15 @@ func _ready():
 	SignalManager.connect("to_study", _to_study)
 	SignalManager.connect("end_study", _end_study)
 	SignalManager.connect("start_studing", _on_studing)
+	SignalManager.connect("c_back", _c_back)
 	var screen_size = get_viewport_rect().size
 	var window_size = Vector2(1000, 300)
 	# 將 game_window 的左上角對齊螢幕右下角
 	game_window.position = screen_size - window_size
 	timer.wait_time = randf_range(5,15)
 	switch_room.visible = false
-func _process(_delta):
 	
+func _process(_delta):
 	#當沒移動且沒開計時且沒有目標位置
 	if not moving and timer.is_stopped() and character_p == 0 and not stop: 
 		timer.start()
@@ -158,3 +159,8 @@ func _room_mode():
 	no_back.p = Vector2(character_body_2d.position.x,character_body_2d.position.y)
 	get_tree().root.add_child(no_back)  # 把新的場景加到畫面上
 	ui.queue_free()  # 把自己刪掉
+	
+func _c_back(): #角色回到房間的動畫
+	var tween = get_tree().create_tween()
+	character_body_2d.scale.y = 3
+	tween.tween_property(character_body_2d, "scale:y", 1, 0.5)
