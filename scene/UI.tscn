@@ -140,6 +140,9 @@ offset_right = -157.0
 offset_bottom = -35.0
 metadata/_edit_use_anchors_ = true
 
+[node name="LevelSystem" parent="game_window/menu" instance=ExtResource("13_87k4a")]
+position = Vector2(127, 86)
+
 [node name="forward timing" parent="game_window" instance=ExtResource("9_3ycfw")]
 visible = false
 offset_left = -486.0
@@ -161,9 +164,6 @@ scale = Vector2(0.292196, 0.292196)
 texture = ExtResource("11_gkllu")
 region_enabled = true
 region_rect = Rect2(279.3, 149.484, 3263.67, 963.225)
-
-[node name="LevelSystem" parent="game_window" instance=ExtResource("13_87k4a")]
-position = Vector2(343, -225)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

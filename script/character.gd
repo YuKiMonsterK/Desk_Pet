@@ -66,4 +66,4 @@ func  _stop_study():
 	
 func  _end_study():
 	book.visible = false
-	animated_sprite_2d.animation == "default"
+	animated_sprite_2d.animation = "default"
