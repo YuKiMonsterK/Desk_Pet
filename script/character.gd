@@ -4,6 +4,10 @@ extends CharacterBody2D
 @onready var right_ray: RayCast2D = $RightRay
 @onready var left_ray: RayCast2D = $LeftRay
 @onready var book: AnimatedSprite2D = $Book
+@onready var character_body_2d: CharacterBody2D = $"."
+
+var back = false
+var back_p = 0
 
 func _ready() -> void:
 	SignalManager.connect("character_drag", _on_drag)
@@ -13,12 +17,13 @@ func _ready() -> void:
 	SignalManager.connect("stop_study", _stop_study)
 	SignalManager.connect("end_study", _end_study)
 	SignalManager.connect("character_caress", _caress)
+	SignalManager.connect("back_home", _back_home)
 	animated_sprite_2d.animation = "default"
 	book.visible = false
 	
 func _process(delta: float) -> void:
 	
-	if animated_sprite_2d.animation == "default":
+	if animated_sprite_2d.animation == "default" and not back:
 		animated_sprite_2d.scale = Vector2(0.511,0.511)
 	elif animated_sprite_2d.animation == "drag":
 		animated_sprite_2d.scale = Vector2(0.256,0.256)
@@ -28,13 +33,16 @@ func _process(delta: float) -> void:
 		animated_sprite_2d.scale = Vector2(0.101,0.101)
 	elif  animated_sprite_2d.animation == "caress":
 		animated_sprite_2d.scale = Vector2(0.9,0.9)
+		
 	if not animated_sprite_2d.is_playing():
 		animated_sprite_2d.play()
 	if left_ray.is_colliding():
 		SignalManager.emit_signal("colliding","left")
 	elif right_ray.is_colliding():
 		SignalManager.emit_signal("colliding","right")
-		
+	if character_body_2d.scale.y == 3:
+		SignalManager.emit_signal("room_mode")
+	
 func _on_drag():
 	animated_sprite_2d.animation = "drag"
 		
@@ -67,3 +75,10 @@ func  _stop_study():
 func  _end_study():
 	book.visible = false
 	animated_sprite_2d.animation = "default"
+
+func _back_home():
+	back = true
+	animated_sprite_2d.animation = "default"
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale:y", 3.0, 0.5)
+	back = false
