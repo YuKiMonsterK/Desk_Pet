@@ -7,6 +7,7 @@ extends Node2D
 @onready var timer: Timer = $Timer
 @onready var switch_room: Sprite2D = $game_window/SwitchRoom
 @onready var ui: Node2D = $"."
+@onready var timer_button: Button = $game_window/Timer_button
 
 var move_edge = false #當滑鼠在拖移區的邊緣
 var move_p = Vector2i()
@@ -70,6 +71,7 @@ func _process(_delta):
 		character_p = 0
 		SignalManager.emit_signal("character_stop")
 		if study:
+			timer_button.position = Vector2i(129,-107)
 			SignalManager.emit_signal("start_studing")
 	
 	if character_body_2d.position.y < -115 and not move_edge:
@@ -153,7 +155,7 @@ func _on_studing():
 	
 func _end_study():
 	stop = false
-	
+	timer_button.position = Vector2i(204,-103)
 func _room_mode():
 	var no_back = load("res://scene/no_back_ui.tscn").instantiate()
 	no_back.p = Vector2(character_body_2d.position.x,character_body_2d.position.y)
