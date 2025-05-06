@@ -96,9 +96,9 @@ icon_alignment = 1
 
 [node name="Timer_button" parent="game_window" instance=ExtResource("3_gkllu")]
 offset_left = 204.0
-offset_top = -103.0
+offset_top = -104.0
 offset_right = 256.0
-offset_bottom = -82.0
+offset_bottom = -83.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
