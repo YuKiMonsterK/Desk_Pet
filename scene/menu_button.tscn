@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://n6i50bvhbrp0"]
 
+[ext_resource type="Theme" uid="uid://cpa01omv5bd6o" path="res://assets/主題/gear.tres" id="2_0kp8n"]
 [ext_resource type="Script" uid="uid://bojvlm3mt0b44" path="res://script/menu_button.gd" id="2_ekw0u"]
-[ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_wjdj2"]
 [ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_e3ubi"]
 
 [node name="PanelContainer" type="PanelContainer"]
@@ -24,7 +24,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("3_wjdj2")
+theme = ExtResource("2_0kp8n")
 icon = ExtResource("4_e3ubi")
 flat = true
 alignment = 0

@@ -1177,8 +1177,6 @@ script = ExtResource("1_k8rrn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.511, 0.511)
 sprite_frames = SubResource("SpriteFrames_j6hc6")
-animation = &"caress"
-frame_progress = 0.76951
 
 [node name="RightRay" type="RayCast2D" parent="."]
 target_position = Vector2(69, 0)

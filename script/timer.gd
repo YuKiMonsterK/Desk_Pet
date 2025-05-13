@@ -13,9 +13,9 @@ var current_session: int = 0  # 當前工作週期計數
 
 @onready var timer_node = $tomato/TimerNode
 @onready var timer_label = $tomato/PanelContainer/MarginContainer/VBoxContainer/TimerLabel
-@onready var start_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/StartButton
+@onready var start_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartButton
 @onready var reset_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton
-@onready var settings_button = $tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton
+@onready var settings_button = $tomato/SettingsButton
 @onready var settings_panel = $tomato/SettingsPanel
 @onready var work_time_spin = $tomato/SettingsPanel/MarginContainer/VBoxContainer/WorkTimeSpinBox
 @onready var break_time_spin = $tomato/SettingsPanel/MarginContainer/VBoxContainer/BreakTimeSpinBox
@@ -51,7 +51,7 @@ func update_display():
 	# 將秒數轉換為分:秒格式
 	var minutes = current_time / 60
 	var seconds = current_time % 60
-	timer_label.text = "%02d:%02d (%02d/%02d)" % [minutes, seconds , current_session, sessions_spin.value]
+	timer_label.text = "%02d:%02d \n(%02d/%02d)" % [minutes, seconds , current_session, sessions_spin.value]
 
 func _on_start_button_pressed():
 	is_running = !is_running

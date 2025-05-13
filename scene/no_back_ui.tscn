@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://deyybtl0t2i5o"]
+[gd_scene load_steps=14 format=3 uid="uid://deyybtl0t2i5o"]
 
 [ext_resource type="Script" uid="uid://cdids7kojwu61" path="res://script/no_back_ui.gd" id="1_spugf"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_8o7hl"]
-[ext_resource type="Texture2D" uid="uid://dpxugpa3j2jsf" path="res://assets/測試的圖片資源/state_item.png" id="3_mgtte"]
+[ext_resource type="Texture2D" uid="uid://cld8ahx2vlk5t" path="res://assets/calendar.png" id="3_mgtte"]
 [ext_resource type="Texture2D" uid="uid://ce14q767vpbr5" path="res://assets/測試的圖片資源/⏲定时器(120 x 120).png" id="4_mgtte"]
 [ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="4_pv6fs"]
-[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="5_mgtte"]
 [ext_resource type="Texture2D" uid="uid://cwjhap55chpx0" path="res://assets/測試的圖片資源/🍅.png" id="6_0wwhy"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="6_x4u32"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="7_0wwhy"]
@@ -59,13 +58,6 @@ offset_right = 224.0
 offset_bottom = 238.0
 icon = ExtResource("6_0wwhy")
 flat = true
-
-[node name="DropdownButton" parent="game_window" instance=ExtResource("5_mgtte")]
-offset_left = 424.0
-offset_top = 126.0
-offset_right = 532.0
-offset_bottom = 159.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("6_x4u32")]
 visible = false
