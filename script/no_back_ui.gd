@@ -52,8 +52,10 @@ func _input(event):
 	#正在摸頭，缺點是拖移時會有一段摸頭的時期
 	if Input.is_action_pressed("accept") and in_move_area and event is InputEventMouseMotion and not move_edge:
 		SignalManager.emit_signal("character_caress","y")
+		collision_shape_2d.scale = Vector2(1.3,1.3)
 	elif not in_move_area:
 		SignalManager.emit_signal("character_caress","n")
+		collision_shape_2d.scale = Vector2(1,1)
 		
 func _on_move_mouse_entered() -> void:
 	in_move_area = true
