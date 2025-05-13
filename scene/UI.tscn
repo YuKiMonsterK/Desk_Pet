@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="4_82v5q"]
 [ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="5_82v5q"]
 [ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="5_87k4a"]
-[ext_resource type="PackedScene" uid="uid://dd7fju2ngw7hu" path="res://scene/dropdown_button.tscn" id="6_7gjmc"]
+[ext_resource type="Texture2D" uid="uid://cld8ahx2vlk5t" path="res://assets/calendar.png" id="5_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
@@ -79,10 +79,12 @@ size = Vector2i(922, 747)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.305, 0, 0)
 
 [node name="menu_button" parent="game_window" instance=ExtResource("3_gkllu")]
-offset_left = -91.0
-offset_top = -162.0
-offset_right = -34.0
-offset_bottom = -141.0
+offset_left = -122.0
+offset_top = -185.0
+offset_right = -54.0
+offset_bottom = -117.0
+icon = ExtResource("5_h5qp4")
+flat = true
 
 [node name="forward timing_button" parent="game_window" instance=ExtResource("3_gkllu")]
 offset_left = 5.0
@@ -96,9 +98,9 @@ icon_alignment = 1
 
 [node name="Timer_button" parent="game_window" instance=ExtResource("3_gkllu")]
 offset_left = 204.0
-offset_top = -103.0
+offset_top = -104.0
 offset_right = 256.0
-offset_bottom = -82.0
+offset_bottom = -83.0
 flat = true
 metadata/_edit_use_anchors_ = true
 
@@ -113,19 +115,13 @@ scale = Vector2(0.961538, 0.961538)
 position = Vector2(-36.0402, -197.078)
 shape = SubResource("CircleShape2D_6kbn0")
 
-[node name="DropdownButton" parent="game_window" instance=ExtResource("6_7gjmc")]
-offset_left = -368.0
-offset_top = -235.0
-offset_right = -260.0
-offset_bottom = -202.0
-
 [node name="Timer" parent="game_window" instance=ExtResource("7_h5qp4")]
 visible = false
 z_index = 1
-offset_left = -284.0
-offset_top = -226.0
-offset_right = -26.0
-offset_bottom = -3.0
+offset_left = -286.0
+offset_top = -272.0
+offset_right = -28.0
+offset_bottom = -49.0
 mouse_filter = 1
 
 [node name="move" parent="game_window/Timer" instance=ExtResource("10_7gjmc")]

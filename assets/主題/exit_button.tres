@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dtttrpww2gsfn"]
 
 [ext_resource type="Texture2D" uid="uid://cmhmsmem61reu" path="res://assets/exit.png" id="1_l41vf"]
-[ext_resource type="Texture2D" uid="uid://c83kabagbfi0v" path="res://assets/測試的圖片資源/blue_box.png" id="1_rj302"]
+[ext_resource type="Texture2D" uid="uid://d3w2txato1gps" path="res://assets/gear.png" id="2_l41vf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uocje"]
-texture = ExtResource("1_rj302")
+texture = ExtResource("2_l41vf")
 texture_margin_left = 40.0
 texture_margin_top = 40.0
 texture_margin_right = 40.0

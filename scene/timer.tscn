@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3tgwo0eyqd31"]
+[gd_scene load_steps=5 format=3 uid="uid://b3tgwo0eyqd31"]
 
 [ext_resource type="Script" uid="uid://dyqlxcytfpdcx" path="res://script/timer.gd" id="1_timer"]
 [ext_resource type="Theme" uid="uid://cph4vle43ppcp" path="res://assets/主題/tomato.tres" id="2_2ibnp"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_4djcp"]
+[ext_resource type="Theme" uid="uid://cpa01omv5bd6o" path="res://assets/主題/gear.tres" id="4_4vihf"]
 
 [node name="Timer" type="Control"]
 layout_mode = 3
@@ -18,50 +19,48 @@ script = ExtResource("1_timer")
 anchors_preset = 0
 offset_right = 241.0
 offset_bottom = 222.445
+scale = Vector2(0.815, 0.815)
 
 [node name="PanelContainer" type="PanelContainer" parent="tomato"]
 z_index = -1
 layout_mode = 0
-offset_right = 250.0
-offset_bottom = 246.0
+offset_right = 331.0
+offset_bottom = 301.0
 theme = ExtResource("2_2ibnp")
 
 [node name="MarginContainer" type="MarginContainer" parent="tomato/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 70
+theme_override_constants/margin_top = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="tomato/PanelContainer/MarginContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 36
 text = "番茄鐘"
 horizontal_alignment = 1
 
 [node name="TimerLabel" type="Label" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
-text = "25:00 (0/4)"
+theme_override_font_sizes/font_size = 25
+text = "25:00
+ (0/4)"
 horizontal_alignment = 1
-
-[node name="StartButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "開始"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="StartButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "開始"
+
 [node name="ResetButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "重置"
-
-[node name="SettingsButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "設置"
 
 [node name="TimerNode" type="Timer" parent="tomato"]
 
@@ -73,10 +72,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 31.0
-offset_top = -59.0
-offset_right = 191.0
-offset_bottom = 230.0
+offset_left = -55.4693
+offset_top = -102.634
+offset_right = 104.531
+offset_bottom = 186.366
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -145,16 +144,25 @@ text = "保存"
 [node name="exit_button" type="Button" parent="tomato"]
 z_index = -1
 layout_mode = 0
-offset_left = 169.0
-offset_top = 50.0
-offset_right = 207.0
-offset_bottom = 88.0
+offset_left = 247.0
+offset_top = 83.0
+offset_right = 285.0
+offset_bottom = 121.0
 theme = ExtResource("3_4djcp")
 flat = true
 
-[connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[node name="SettingsButton" type="Button" parent="tomato"]
+layout_mode = 2
+offset_left = 247.0
+offset_top = 121.0
+offset_right = 287.0
+offset_bottom = 159.0
+theme = ExtResource("4_4vihf")
+flat = true
+
+[connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="timeout" from="tomato/TimerNode" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="tomato/SettingsPanel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="tomato/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="tomato/SettingsButton" to="." method="_on_settings_button_pressed"]

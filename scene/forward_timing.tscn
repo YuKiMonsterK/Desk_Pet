@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2vhxfiag4n44" path="res://script/forward_timing.gd" id="1_0vecy"]
 [ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="2_0vecy"]
-[ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_6ba6v"]
+[ext_resource type="Theme" uid="uid://cpa01omv5bd6o" path="res://assets/主題/gear.tres" id="3_0vecy"]
 
 [node name="forward timing" type="Control"]
 layout_mode = 3
@@ -60,7 +60,7 @@ offset_left = 151.0
 offset_top = 24.0
 offset_right = 189.0
 offset_bottom = 62.0
-theme = ExtResource("3_6ba6v")
+theme = ExtResource("3_0vecy")
 flat = true
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

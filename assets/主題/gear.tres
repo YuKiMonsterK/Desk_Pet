@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cpa01omv5bd6o"]
+
+[ext_resource type="Texture2D" uid="uid://d3w2txato1gps" path="res://assets/gear.png" id="1_jqgq1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uocje"]
+texture = ExtResource("1_jqgq1")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+region_rect = Rect2(47, 30, 346, 166)
+
+[resource]
+Button/constants/icon_max_width = 30
+Button/icons/icon = ExtResource("1_jqgq1")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_uocje")
