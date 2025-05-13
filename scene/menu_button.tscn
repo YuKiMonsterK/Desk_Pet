@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://n6i50bvhbrp0"]
+[gd_scene load_steps=5 format=3 uid="uid://n6i50bvhbrp0"]
 
+[ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="1_21xop"]
 [ext_resource type="Theme" uid="uid://cpa01omv5bd6o" path="res://assets/主題/gear.tres" id="2_0kp8n"]
 [ext_resource type="Script" uid="uid://bojvlm3mt0b44" path="res://script/menu_button.gd" id="2_ekw0u"]
 [ext_resource type="Texture2D" uid="uid://cw25jtm0ydi6d" path="res://assets/pixil-frame-0.png" id="4_e3ubi"]
@@ -8,16 +9,19 @@
 offset_top = -2.0
 offset_right = 258.0
 offset_bottom = 199.0
+theme = ExtResource("1_21xop")
 script = ExtResource("2_ekw0u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = -25
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = -20
+theme_override_constants/separation = -30
 
 [node name="exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

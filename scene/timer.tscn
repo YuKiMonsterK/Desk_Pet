@@ -34,6 +34,7 @@ theme_override_constants/margin_top = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="tomato/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -43,6 +44,7 @@ horizontal_alignment = 1
 
 [node name="TimerLabel" type="Label" parent="tomato/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 25
 text = "25:00
  (0/4)"
@@ -56,10 +58,12 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 26
 text = "開始"
 
 [node name="ResetButton" type="Button" parent="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "重置"
 
 [node name="TimerNode" type="Timer" parent="tomato"]

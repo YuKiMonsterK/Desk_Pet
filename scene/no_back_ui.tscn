@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cdids7kojwu61" path="res://script/no_back_ui.gd" id="1_spugf"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="2_8o7hl"]
-[ext_resource type="Texture2D" uid="uid://cld8ahx2vlk5t" path="res://assets/calendar.png" id="3_mgtte"]
+[ext_resource type="Texture2D" uid="uid://sae2twmuasdt" path="res://assets/日曆.png" id="3_mgtte"]
 [ext_resource type="Texture2D" uid="uid://ce14q767vpbr5" path="res://assets/測試的圖片資源/⏲定时器(120 x 120).png" id="4_mgtte"]
 [ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="4_pv6fs"]
-[ext_resource type="Texture2D" uid="uid://cwjhap55chpx0" path="res://assets/測試的圖片資源/🍅.png" id="6_0wwhy"]
+[ext_resource type="Texture2D" uid="uid://dfnyce3ohrwt6" path="res://assets/番茄.png" id="6_mgtte"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="6_x4u32"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="7_0wwhy"]
 [ext_resource type="PackedScene" uid="uid://wn3c3q5t3x8q" path="res://scene/move_area.tscn" id="7_78ck8"]
@@ -56,7 +56,8 @@ offset_left = 156.0
 offset_top = 170.0
 offset_right = 224.0
 offset_bottom = 238.0
-icon = ExtResource("6_0wwhy")
+theme_override_icons/icon = ExtResource("6_mgtte")
+icon = ExtResource("6_mgtte")
 flat = true
 
 [node name="Timer" parent="game_window" instance=ExtResource("6_x4u32")]

@@ -86,7 +86,7 @@ func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible
 	exit_button.visible = false
 	panel_container.visible = false
-	
+	settings_button.visible = false
 func _on_save_button_pressed():
 	# 更新所有時間設定
 	work_time = int(work_time_spin.value)
@@ -102,7 +102,7 @@ func _on_save_button_pressed():
 		current_time = break_time * 60
 	update_display()
 	settings_panel.visible = false
-
+	settings_button.visible = true
 func _on_timer_complete():
 	is_running = false
 	timer_node.stop()

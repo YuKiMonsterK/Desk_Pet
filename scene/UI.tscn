@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://6coa40dfor8i" path="res://scene/room.tscn" id="2_rxvkj"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="3_gkllu"]
 [ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="4_82v5q"]
+[ext_resource type="Texture2D" uid="uid://sae2twmuasdt" path="res://assets/日曆.png" id="5_7gjmc"]
 [ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="5_82v5q"]
 [ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="5_87k4a"]
-[ext_resource type="Texture2D" uid="uid://cld8ahx2vlk5t" path="res://assets/calendar.png" id="5_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
@@ -83,7 +83,7 @@ offset_left = -122.0
 offset_top = -185.0
 offset_right = -54.0
 offset_bottom = -117.0
-icon = ExtResource("5_h5qp4")
+icon = ExtResource("5_7gjmc")
 flat = true
 
 [node name="forward timing_button" parent="game_window" instance=ExtResource("3_gkllu")]
@@ -137,7 +137,7 @@ offset_bottom = -35.0
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelSystem" parent="game_window/menu" instance=ExtResource("13_87k4a")]
-position = Vector2(127, 86)
+position = Vector2(128, 109)
 
 [node name="forward timing" parent="game_window" instance=ExtResource("9_3ycfw")]
 visible = false
