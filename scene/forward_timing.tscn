@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2vhxfiag4n44" path="res://script/forward_timing.gd" id="1_0vecy"]
 [ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="2_0vecy"]
-[ext_resource type="Theme" uid="uid://cpa01omv5bd6o" path="res://assets/主題/gear.tres" id="3_0vecy"]
+[ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_0vecy"]
 
 [node name="forward timing" type="Control"]
 layout_mode = 3
@@ -21,6 +21,7 @@ theme = ExtResource("2_0vecy")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_top = 45
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -33,6 +34,7 @@ horizontal_alignment = 1
 
 [node name="TimerLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
 text = "00:00"
 horizontal_alignment = 1
@@ -56,10 +58,10 @@ text = "重置"
 
 [node name="exit_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 151.0
-offset_top = 24.0
-offset_right = 189.0
-offset_bottom = 62.0
+offset_left = 169.0
+offset_top = 81.0
+offset_right = 207.0
+offset_bottom = 119.0
 theme = ExtResource("3_0vecy")
 flat = true
 

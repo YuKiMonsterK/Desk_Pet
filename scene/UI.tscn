@@ -79,10 +79,10 @@ size = Vector2i(922, 747)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.305, 0, 0)
 
 [node name="menu_button" parent="game_window" instance=ExtResource("3_gkllu")]
-offset_left = -122.0
-offset_top = -185.0
-offset_right = -54.0
-offset_bottom = -117.0
+offset_left = 1.0
+offset_top = -171.0
+offset_right = 69.0
+offset_bottom = -103.0
 icon = ExtResource("5_7gjmc")
 flat = true
 
