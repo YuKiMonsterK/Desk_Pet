@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3tgwo0eyqd31"]
+[gd_scene load_steps=6 format=3 uid="uid://b3tgwo0eyqd31"]
 
 [ext_resource type="Script" uid="uid://dyqlxcytfpdcx" path="res://script/timer.gd" id="1_timer"]
 [ext_resource type="Theme" uid="uid://cph4vle43ppcp" path="res://assets/主題/tomato.tres" id="2_2ibnp"]
 [ext_resource type="Theme" uid="uid://dtttrpww2gsfn" path="res://assets/主題/exit_button.tres" id="3_4djcp"]
-[ext_resource type="Theme" uid="uid://cpa01omv5bd6o" path="res://assets/主題/gear.tres" id="4_4vihf"]
+[ext_resource type="Theme" uid="uid://chiqg10lti3ed" path="res://assets/主題/gear.tres" id="4_4vihf"]
+[ext_resource type="PackedScene" uid="uid://dldle33od0y1r" path="res://scene/focus_tracker.tscn" id="5_i2f8w"]
 
 [node name="Timer" type="Control"]
 layout_mode = 3
@@ -159,6 +160,8 @@ offset_right = 287.0
 offset_bottom = 159.0
 theme = ExtResource("4_4vihf")
 flat = true
+
+[node name="FocusTracker" parent="tomato" instance=ExtResource("5_i2f8w")]
 
 [connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tomato/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

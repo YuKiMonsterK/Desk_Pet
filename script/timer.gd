@@ -25,6 +25,7 @@ var current_session: int = 0  # 當前工作週期計數
 @onready var panel_container: PanelContainer = $tomato/PanelContainer
 @onready var exit_button: Button = $tomato/exit_button
 @onready var label: Label = $tomato/PanelContainer/MarginContainer/VBoxContainer/Label
+@onready var focus_tracker: Node2D = $tomato/FocusTracker
 
 func _ready():
 	# 初始化時間為工作時間（分鐘轉換為秒）
@@ -40,6 +41,7 @@ func _ready():
 	panel_container.visible = false
 	exit_button.visible = false
 	label.text = "番茄鐘"
+	add_child(focus_tracker)  # === [新增] 加入 focus tracker 節點 ===
 	
 func _on_timer_timeout():
 	current_time -= 1
@@ -59,8 +61,10 @@ func _on_start_button_pressed():
 	if is_running:
 		label.text = "已暫停"
 		timer_node.start()
+		focus_tracker.start_tracking()
 	else:
 		timer_node.stop()
+		focus_tracker.stop_tracking()  # === [新增] 停止追蹤 ===
 	if is_working:
 		label.text = "讀書中..."
 	else:
@@ -81,6 +85,7 @@ func _on_reset_button_pressed():
 	current_session = 0
 	update_display()
 	SignalManager.emit_signal("end_study")
+	focus_tracker.reset_focus_time()  # === [新增] 清除紀錄 ===
 
 func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible

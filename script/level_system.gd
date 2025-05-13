@@ -46,3 +46,5 @@ func load_data():
 	if err == OK:  # 如果成功加载存档
 		total_seconds = config.get_value(SAVE_SECTION, "total_seconds", 0)
 		level = config.get_value(SAVE_SECTION, "level", 1)
+		
+		print(ProjectSettings.globalize_path("user://"))
