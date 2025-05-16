@@ -79,7 +79,11 @@ offset_bottom = 291.0
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelSystem" parent="game_window/menu" instance=ExtResource("9_8o7hl")]
-position = Vector2(129, 84)
+position = Vector2(123, 102)
+
+[node name="move" parent="game_window/menu" instance=ExtResource("7_78ck8")]
+z_index = -1
+position = Vector2(126, -10)
 
 [node name="forward timing" parent="game_window" instance=ExtResource("8_dxpqv")]
 visible = false
