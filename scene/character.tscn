@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=3 uid="uid://ccmdrss8ufyo1"]
+[gd_scene load_steps=173 format=3 uid="uid://ccmdrss8ufyo1"]
 
 [ext_resource type="Script" uid="uid://bhpxjis5i533r" path="res://script/character.gd" id="1_k8rrn"]
 [ext_resource type="Texture2D" uid="uid://dmswod0jnlxpd" path="res://assets/idle.png" id="2_k8rrn"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://xrbo3ag2wnmw" path="res://assets/move.png" id="3_d7vt2"]
 [ext_resource type="Texture2D" uid="uid://dt56n8b7kusa8" path="res://assets/walk.png" id="4_6k5wm"]
 [ext_resource type="Texture2D" uid="uid://gtf82csp8xbl" path="res://assets/read.png" id="4_p3t0x"]
-[ext_resource type="Texture2D" uid="uid://fig2qw4bamhu" path="res://assets/combined.png" id="7_mbevu"]
+[ext_resource type="Texture2D" uid="uid://6rkbbfg5r76c" path="res://assets/坐下.png" id="5_wdeb7"]
+[ext_resource type="Texture2D" uid="uid://dop4ucyd1buoq" path="res://assets/combined.png" id="7_mbevu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4bckg"]
 atlas = ExtResource("2_mbevu")
@@ -408,6 +409,10 @@ region = Rect2(0, 2160, 1280, 720)
 atlas = ExtResource("3_d7vt2")
 region = Rect2(1280, 2160, 1280, 720)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h1f7"]
+atlas = ExtResource("5_wdeb7")
+region = Rect2(0, 0, 1937, 2432)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_e86s6"]
 atlas = ExtResource("4_p3t0x")
 region = Rect2(0, 0, 1937, 2432)
@@ -803,7 +808,7 @@ animations = [{
 "speed": 25.0
 }, {
 "frames": [{
-"duration": 5.0,
+"duration": 20.0,
 "texture": SubResource("AtlasTexture_d7vt2")
 }, {
 "duration": 1.0,
@@ -916,6 +921,14 @@ animations = [{
 "loop": true,
 "name": &"drag",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h1f7")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1175,7 +1188,7 @@ animations = [{
 script = ExtResource("1_k8rrn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.511, 0.511)
+scale = Vector2(0.086, 0.086)
 sprite_frames = SubResource("SpriteFrames_j6hc6")
 
 [node name="RightRay" type="RayCast2D" parent="."]
