@@ -11,16 +11,14 @@ extends Node2D
 @onready var timer: Timer = $Timer
 
 var move_edge = false #當滑鼠在拖移區的邊緣
-var move_p = Vector2i()
-var accept_sec = 0
-var menu_area = false
-var room_mode = true  # 為之後的房間模式做準備
-var moving = false
-var character_p = 0
-var direction = 0
-var study = false
-var stop = false
-var in_move_area = false
+var move_p = Vector2i() #拖移時的滑鼠偏移
+var room_mode = true #有房間模式
+var moving = false #是否正在移動
+var character_p = 0 #移動的目的地
+var direction = 0 #方向（-1:左 1:右）
+var study = false #是否在走路去學習
+var stop = false #不可以移動（學習模式中）
+var in_move_area = false 
 var walk_or_sit = 0
 
 func _ready():
@@ -36,7 +34,7 @@ func _ready():
 	SignalManager.connect("start_studing", _on_studing)
 	SignalManager.connect("c_back", _c_back)
 	var screen_size = get_viewport_rect().size
-	var window_size = Vector2(1000, 300)
+	var window_size = Vector2(970, 285)
 	# 將 game_window 的左上角對齊螢幕右下角
 	game_window.position = screen_size - window_size
 	walk_timer.wait_time = randf_range(5,15)
