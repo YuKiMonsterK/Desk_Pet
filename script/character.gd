@@ -18,6 +18,7 @@ func _ready() -> void:
 	SignalManager.connect("end_study", _end_study)
 	SignalManager.connect("character_caress", _caress)
 	SignalManager.connect("back_home", _back_home)
+	SignalManager.connect("sit", _sit)
 	animated_sprite_2d.animation = "default"
 	book.visible = false
 	
@@ -35,6 +36,8 @@ func _process(delta: float) -> void:
 	elif  animated_sprite_2d.animation == "caress":
 		animated_sprite_2d.scale = Vector2(0.31,0.31)
 		animated_sprite_2d.position = Vector2(10,-1)
+	elif  animated_sprite_2d.animation == "sit":
+		animated_sprite_2d.scale = Vector2(0.086,0.086)
 		
 	if not animated_sprite_2d.is_playing():
 		animated_sprite_2d.play()
@@ -84,3 +87,6 @@ func _back_home():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale:y", 3.0, 0.5)
 	back = false
+
+func _sit():
+	animated_sprite_2d.animation = "sit"

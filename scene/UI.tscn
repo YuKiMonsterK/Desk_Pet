@@ -1,19 +1,20 @@
-[gd_scene load_steps=20 format=3 uid="uid://cvg1r2yofo8de"]
+[gd_scene load_steps=21 format=3 uid="uid://cvg1r2yofo8de"]
 
 [ext_resource type="Script" uid="uid://dtxbffoqohsfw" path="res://script/UI.gd" id="1_lj1a1"]
 [ext_resource type="PackedScene" uid="uid://benlml0kbla65" path="res://scene/room_front.tscn" id="2_gkllu"]
 [ext_resource type="PackedScene" uid="uid://6coa40dfor8i" path="res://scene/room.tscn" id="2_rxvkj"]
 [ext_resource type="PackedScene" uid="uid://ckoksm4nhc53c" path="res://scene/base_button.tscn" id="3_gkllu"]
 [ext_resource type="Texture2D" uid="uid://b1tvt08lp2caj" path="res://assets/測試的圖片資源/clock.png" id="4_82v5q"]
+[ext_resource type="Texture2D" uid="uid://sae2twmuasdt" path="res://assets/日曆.png" id="5_7gjmc"]
 [ext_resource type="Theme" uid="uid://irahf0p4ps7c" path="res://assets/主題/theme.tres" id="5_82v5q"]
 [ext_resource type="PackedScene" uid="uid://ccmdrss8ufyo1" path="res://scene/character.tscn" id="5_87k4a"]
-[ext_resource type="Texture2D" uid="uid://cld8ahx2vlk5t" path="res://assets/calendar.png" id="5_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://b3tgwo0eyqd31" path="res://scene/timer.tscn" id="7_h5qp4"]
 [ext_resource type="PackedScene" uid="uid://n6i50bvhbrp0" path="res://scene/menu_button.tscn" id="8_eqhda"]
 [ext_resource type="PackedScene" uid="uid://dq35a1lg6jvk8" path="res://scene/forward_timing.tscn" id="9_3ycfw"]
 [ext_resource type="PackedScene" uid="uid://wn3c3q5t3x8q" path="res://scene/move_area.tscn" id="10_7gjmc"]
 [ext_resource type="Texture2D" uid="uid://bllhy3b2t7md3" path="res://assets/switch_room.png" id="11_gkllu"]
 [ext_resource type="PackedScene" uid="uid://b1uncn23uovlb" path="res://scene/level_system.tscn" id="13_87k4a"]
+[ext_resource type="PackedScene" uid="uid://dldle33od0y1r" path="res://scene/focus_tracker.tscn" id="13_h5qp4"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5yxy"]
 viewport_path = NodePath("game_window/room_base")
@@ -37,7 +38,6 @@ position = Vector2(571, 235)
 script = ExtResource("1_lj1a1")
 
 [node name="game_window" type="Node2D" parent="."]
-position = Vector2(71, 174)
 
 [node name="room_base" type="SubViewport" parent="game_window"]
 transparent_bg = true
@@ -65,25 +65,25 @@ shape = SubResource("WorldBoundaryShape2D_tqoya")
 
 [node name="room-2" type="Sprite2D" parent="game_window"]
 z_index = 1
-position = Vector2(136, -89)
+position = Vector2(-33, -92)
 scale = Vector2(0.862745, 0.929054)
 texture = SubResource("ViewportTexture_rxvkj")
 region_enabled = true
-region_rect = Rect2(465.82, 320.06, 418.733, 222.543)
+region_rect = Rect2(75, 320.06, 809.553, 222.543)
 
 [node name="SubViewport" type="SubViewport" parent="game_window/room-2"]
 transparent_bg = true
 size = Vector2i(922, 747)
 
 [node name="room_front" parent="game_window/room-2/SubViewport" instance=ExtResource("2_gkllu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.305, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.2354, 0, 0)
 
 [node name="menu_button" parent="game_window" instance=ExtResource("3_gkllu")]
-offset_left = -122.0
-offset_top = -185.0
-offset_right = -54.0
-offset_bottom = -117.0
-icon = ExtResource("5_h5qp4")
+offset_left = 1.0
+offset_top = -171.0
+offset_right = 69.0
+offset_bottom = -103.0
+icon = ExtResource("5_7gjmc")
 flat = true
 
 [node name="forward timing_button" parent="game_window" instance=ExtResource("3_gkllu")]
@@ -105,7 +105,7 @@ flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="CharacterBody2D" parent="game_window" instance=ExtResource("5_87k4a")]
-position = Vector2(157, -114)
+position = Vector2(155, -109)
 
 [node name="move" type="Area2D" parent="game_window/CharacterBody2D"]
 position = Vector2(33.654, 129.498)
@@ -117,7 +117,7 @@ shape = SubResource("CircleShape2D_6kbn0")
 
 [node name="Timer" parent="game_window" instance=ExtResource("7_h5qp4")]
 visible = false
-z_index = 1
+z_index = 2
 offset_left = -286.0
 offset_top = -272.0
 offset_right = -28.0
@@ -129,18 +129,25 @@ z_index = -1
 position = Vector2(130, -21)
 
 [node name="menu" parent="game_window" instance=ExtResource("8_eqhda")]
-visible = false
-offset_left = -413.0
-offset_top = -238.0
-offset_right = -157.0
-offset_bottom = -35.0
+z_index = 2
+offset_left = -410.0
+offset_top = -246.0
+offset_right = -154.0
+offset_bottom = -43.0
 metadata/_edit_use_anchors_ = true
 
+[node name="FocusTracker" parent="game_window/menu" instance=ExtResource("13_h5qp4")]
+position = Vector2(93, 73)
+
 [node name="LevelSystem" parent="game_window/menu" instance=ExtResource("13_87k4a")]
-position = Vector2(127, 86)
+position = Vector2(129, 136)
+
+[node name="move" parent="game_window/menu" instance=ExtResource("10_7gjmc")]
+position = Vector2(129, -2)
 
 [node name="forward timing" parent="game_window" instance=ExtResource("9_3ycfw")]
 visible = false
+z_index = 2
 offset_left = -486.0
 offset_top = -230.0
 offset_right = -270.0
@@ -161,9 +168,13 @@ texture = ExtResource("11_gkllu")
 region_enabled = true
 region_rect = Rect2(279.3, 149.484, 3263.67, 963.225)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Walk_Timer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="mouse_entered" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_entered"]
 [connection signal="mouse_exited" from="game_window/CharacterBody2D/move" to="." method="_on_move_mouse_exited"]
+[connection signal="timeout" from="Walk_Timer" to="." method="_on_walk_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
