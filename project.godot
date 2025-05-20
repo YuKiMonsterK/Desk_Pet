@@ -18,10 +18,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 SignalManager="*res://script/signal_manager.gd"
 ApiManager="*res://script/ApiManager.cs"
 MouseDetection="*res://script/MouseDetection.cs"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
 

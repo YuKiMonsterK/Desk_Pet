@@ -6,8 +6,8 @@
 
 [node name="PanelContainer" type="PanelContainer"]
 offset_top = -2.0
-offset_right = 277.0
-offset_bottom = 206.0
+offset_right = 440.0
+offset_bottom = 250.0
 theme = ExtResource("1_21xop")
 script = ExtResource("2_ekw0u")
 

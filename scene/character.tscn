@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=3 uid="uid://ccmdrss8ufyo1"]
+[gd_scene load_steps=172 format=3 uid="uid://ccmdrss8ufyo1"]
 
 [ext_resource type="Script" uid="uid://bhpxjis5i533r" path="res://script/character.gd" id="1_k8rrn"]
 [ext_resource type="Texture2D" uid="uid://dmswod0jnlxpd" path="res://assets/idle.png" id="2_k8rrn"]
@@ -264,10 +264,6 @@ region = Rect2(12800, 2880, 1280, 720)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f5dct"]
 atlas = ExtResource("2_mbevu")
 region = Rect2(14080, 2880, 1280, 720)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wkmp3"]
-atlas = ExtResource("2_mbevu")
-region = Rect2(15360, 2880, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7vt2"]
 atlas = ExtResource("2_k8rrn")
@@ -799,9 +795,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f5dct")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wkmp3")
 }],
 "loop": true,
 "name": &"caress",
@@ -1190,7 +1183,7 @@ script = ExtResource("1_k8rrn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.086, 0.086)
 sprite_frames = SubResource("SpriteFrames_j6hc6")
-animation = &"studing"
+animation = &"caress"
 
 [node name="RightRay" type="RayCast2D" parent="."]
 target_position = Vector2(69, 0)
