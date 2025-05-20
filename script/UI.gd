@@ -154,12 +154,13 @@ func _on_walk_timer_timeout() -> void:
 			character_p = -198
 
 func _to_study():
-	character_p = 157
+	character_p = 155
 	study = true
 	
 func _on_study():
 	character_p = 0
 	study = false
+	character_body_2d.position = Vector2(155, -107)
 	
 func _on_studing():
 	stop = true
