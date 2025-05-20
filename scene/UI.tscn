@@ -137,10 +137,10 @@ offset_bottom = -43.0
 metadata/_edit_use_anchors_ = true
 
 [node name="FocusTracker" parent="game_window/menu" instance=ExtResource("13_h5qp4")]
-position = Vector2(93, 73)
+position = Vector2(36, 81)
 
 [node name="LevelSystem" parent="game_window/menu" instance=ExtResource("13_87k4a")]
-position = Vector2(129, 136)
+position = Vector2(86, 125)
 
 [node name="move" parent="game_window/menu" instance=ExtResource("10_7gjmc")]
 position = Vector2(129, -2)
