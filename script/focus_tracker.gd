@@ -23,22 +23,19 @@ func _ready():
 	SignalManager.connect("start_tracking", _start_tracking)
 	SignalManager.connect("stop_tracking", _stop_tracking)
 	
-	## 按钮连接信号
-	clear_focus_button.pressed.connect(_on_clear_focus_pressed)
-	
 	# 加载保存的数据
 	load_data()
 	
 	# 更新 UI
 	update_ui()
 
-# 每秒增加当前专注时长
-func _process(delta):
-	if focus_timer.time_left <= 0:
-		current_focus_time += 1  # 每秒加1
-		accumulated_focus_time += 1  # 累计时间
-		update_ui()
-    
+## 每秒增加当前专注时长
+#func _process(delta):
+	#if focus_timer.time_left <= 0:
+		#current_focus_time += 1  # 每秒加1
+		#accumulated_focus_time += 1  # 累计时间
+		#update_ui()
+	
 func _start_tracking():
 	focus_timer.start()
 
@@ -71,4 +68,3 @@ func load_data():
 	if err == OK:  # 如果成功加载存档
 		current_focus_time = config.get_value(SAVE_SECTION, "current_focus_time", 0)
 		accumulated_focus_time = config.get_value(SAVE_SECTION, "accumulated_focus_time", 0)
-
