@@ -28,12 +28,6 @@ func _ready():
 	# 更新 UI
 	update_ui()
 
-## 每秒增加當前專注時長
-#func _process(delta):
-	#if focus_timer.time_left <= 0:
-		#current_focus_time += 1  # 每秒加1
-		#accumulated_focus_time += 1  # 累計時間
-		#update_ui()
 	
 func _start_tracking():
 	focus_timer.start()
