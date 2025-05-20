@@ -12,7 +12,7 @@ extends Node2D
 
 var move_edge = false #當滑鼠在拖移區的邊緣
 var move_p = Vector2i() #拖移時的滑鼠偏移
-var room_mode = true #有房間模式
+var room_mode = true #房間模式
 var moving = false #是否正在移動
 var character_p = 0 #移動的目的地
 var direction = 0 #方向（-1:左 1:右）
