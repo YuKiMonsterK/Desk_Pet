@@ -37,9 +37,11 @@ func _on_start_button_pressed():
 		timer_node.stop()
 	if start_button.text == "暫停":
 		SignalManager.emit_signal("to_study")
+		SignalManager.emit_signal("start_tracking")
 	elif start_button.text == "開始":
 		SignalManager.emit_signal("stop_study")
-
+		SignalManager.emit_signal("stop_tracking")
+	
 func _on_reset_button_pressed():
 	is_running = false
 	timer_node.stop()

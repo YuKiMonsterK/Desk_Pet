@@ -42,7 +42,6 @@ func _stop_tracking():
 	focus_timer.stop()
 
 func _on_focus_timer_timeout() -> void:
-	print("d")
 	current_focus_time += 1  # 每秒加1
 	accumulated_focus_time += 1  # 累计时间
 	update_ui()
